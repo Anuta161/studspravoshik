@@ -1,0 +1,4099 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Справочник студента ЛСПК | Цифровая экосистема</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+html{
+  scroll-behavior: smooth;
+}
+::selection{
+  background: rgba(255, 205, 74, 0.3);
+  color: #0f2b3d;
+}
+body{
+  font-family:Inter,sans-serif;
+  background:#f4f8fe;
+  color:#0f2b3d;
+  overflow-x: hidden;
+}
+.container{
+  max-width:1280px;
+  margin:auto;
+  padding:0 20px;
+}
+.main-header{
+  background:linear-gradient(135deg,#0f2b3d,#1a4a6e);
+  color:#fff;
+  padding:20px 0;
+  position:sticky;
+  top:0;
+  z-index:999;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.header-flex{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.logo-area{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+.logo-icon{
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  background:#fff;
+  color:#0f2b3d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.logo-text h1{
+  font-size:1.6rem;
+  font-weight: 800;
+}
+.logo-text p{
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+.nav-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+.nav-btn{
+  border:none;
+  background:rgba(255,255,255,.12);
+  padding:10px 18px;
+  border-radius:40px;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+  font-family: Inter, sans-serif;
+  font-size: 0.9rem;
+}
+.nav-btn:hover,
+.nav-btn.active{
+  background:#ffcd4a;
+  color:#1e2a41;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255,205,74,0.3);
+}
+.main-content{
+  padding:40px 0;
+}
+.page{
+  display:none;
+  animation: fadeIn 0.4s ease;
+}
+.active-page{
+  display:block;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.section-title{
+  font-size:2rem;
+  font-weight:800;
+  margin-bottom:25px;
+  border-left:6px solid #ffcd4a;
+  padding-left:18px;
+  color: #0f2b3d;
+}
+
+/* ===== 3D GALLERY - УЛУЧШЕННАЯ ВЕРСИЯ ===== */
+.gallery-section{
+  margin-bottom:50px;
+}
+.gallery-title{
+  font-size:1.5rem;
+  font-weight:700;
+  margin-bottom:20px;
+  color:#1a4a6e;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* Swiper 3D Coverflow */
+.swiper-3d-container {
+  width: 100%;
+  padding: 40px 0 60px;
+  perspective: 1000px;
+}
+
+.swiper-3d {
+  width: 100%;
+  padding: 20px 0 50px;
+  overflow: visible !important;
+}
+
+.swiper-3d .swiper-slide {
+  background: linear-gradient(145deg, #1a4a6e, #0f2b3d);
+  border-radius: 32px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  box-shadow: 0 20px 35px -10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.swiper-3d .swiper-slide:active {
+  cursor: grabbing;
+}
+
+.swiper-3d .swiper-slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(255,205,74,0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.swiper-3d .swiper-slide i {
+  font-size: 64px;
+  margin-bottom: 20px;
+  color: #ffcd4a;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+  transition: transform 0.3s ease;
+}
+
+.swiper-3d .swiper-slide:hover i {
+  transform: scale(1.1) rotateY(10deg);
+}
+
+.swiper-3d .swiper-slide h3 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.swiper-3d .swiper-slide p {
+  margin-top: 12px;
+  opacity: 0.9;
+  font-size: 0.95rem;
+  padding: 0 20px;
+}
+
+.swiper-3d .swiper-pagination-bullet {
+  background: #1a4a6e;
+  opacity: 0.4;
+  width: 10px;
+  height: 10px;
+}
+
+.swiper-3d .swiper-pagination-bullet-active {
+  background: #ffcd4a;
+  opacity: 1;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.swiper-3d .swiper-button-next,
+.swiper-3d .swiper-button-prev {
+  color: #ffcd4a;
+  background: rgba(255,255,255,0.9);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.swiper-3d .swiper-button-next:hover,
+.swiper-3d .swiper-button-prev:hover {
+  background: #ffcd4a;
+  color: #1e2a41;
+  transform: scale(1.1);
+}
+
+.swiper-3d .swiper-button-next::after,
+.swiper-3d .swiper-button-prev::after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Red gradient variant */
+.red-gradient{
+  background:linear-gradient(145deg,#9b2c2c,#6a1e1e) !important;
+}
+.sport-gradient{
+  background:linear-gradient(145deg,#2c6e2c,#1a4a1a) !important;
+}
+
+/* Адаптивность 3D галереи */
+@media (max-width: 768px) {
+  .swiper-3d .swiper-slide {
+    height: 260px;
+    border-radius: 24px;
+  }
+  .swiper-3d .swiper-slide i {
+    font-size: 48px;
+  }
+  .swiper-3d .swiper-slide h3 {
+    font-size: 1.3rem;
+  }
+  .swiper-3d .swiper-button-next,
+  .swiper-3d .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+  }
+  .swiper-3d-container {
+    padding: 20px 0 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper-3d .swiper-slide {
+    height: 220px;
+    border-radius: 20px;
+  }
+  .swiper-3d .swiper-slide i {
+    font-size: 40px;
+    margin-bottom: 12px;
+  }
+  .swiper-3d .swiper-slide h3 {
+    font-size: 1.1rem;
+  }
+  .swiper-3d .swiper-slide p {
+    font-size: 0.8rem;
+    padding: 0 15px;
+  }
+}
+
+/* ===== HERO SECTION ===== */
+.hero-welcome {
+  background: linear-gradient(135deg, #0f2b3d 0%, #1a4a6e 60%, #2563a0 100%);
+  border-radius: 32px;
+  padding: 48px 40px;
+  color: white;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-welcome::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 280px; height: 280px;
+  background: rgba(255,205,74,0.12);
+  border-radius: 50%;
+}
+.hero-welcome::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -40px;
+  width: 200px; height: 200px;
+  background: rgba(255,205,74,0.07);
+  border-radius: 50%;
+}
+.hero-welcome h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+  line-height: 1.2;
+}
+.hero-welcome p {
+  font-size: 1.05rem;
+  opacity: 0.9;
+  line-height: 1.65;
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+.hero-stats {
+  display: flex;
+  gap: 30px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.hero-stat {
+  text-align: center;
+  background: rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 16px 24px;
+  backdrop-filter: blur(4px);
+  min-width: 110px;
+  transition: transform 0.3s ease;
+}
+.hero-stat:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.2);
+}
+.hero-stat .stat-num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffcd4a;
+  display: block;
+  line-height: 1;
+}
+.hero-stat .stat-label {
+  font-size: 0.75rem;
+  opacity: 0.85;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Quick Nav Grid */
+.quick-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.quick-nav-item {
+  background: white;
+  border-radius: 24px;
+  padding: 20px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.22s;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  border: 1.5px solid transparent;
+}
+.quick-nav-item:hover {
+  transform: translateY(-4px);
+  background: #ffcd4a;
+  border-color: #e6b800;
+}
+.quick-nav-item i { font-size: 28px; color: #1a4a6e; display: block; margin-bottom: 8px; }
+.quick-nav-item:hover i { color: #0f2b3d; }
+.quick-nav-item span { font-weight: 700; font-size: 0.82rem; color: #1a4a6e; }
+.quick-nav-item:hover span { color: #0f2b3d; }
+
+/* ===== CARDS ===== */
+.grid-cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:28px;
+}
+.event-card,
+.club-card{
+  background:#fff;
+  border-radius:32px;
+  padding:24px;
+  box-shadow:0 12px 28px rgba(0,0,0,.05);
+  transition:0.25s ease;
+  display:flex;
+  flex-direction:column;
+  border:1px solid rgba(0,0,0,0.02);
+  cursor:pointer;
+}
+.event-card:hover,
+.club-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 30px rgba(0,0,0,.08);
+}
+.event-img,
+.club-img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:20px;
+  margin-bottom:16px;
+}
+.event-icon,
+.club-icon{
+  font-size:48px;
+  margin-bottom:14px;
+}
+.event-card h3,
+.club-card h3{
+  margin-bottom:10px;
+  color:#1a4a6e;
+  font-weight:800;
+  font-size:1.3rem;
+}
+.event-date-badge,
+.club-schedule{
+  display:inline-block;
+  background:#ffcd4a;
+  padding:5px 14px;
+  border-radius:40px;
+  font-weight:700;
+  font-size:0.75rem;
+  margin-bottom:12px;
+  align-self:flex-start;
+}
+.club-leader{
+  font-size:0.85rem;
+  color:#1a4a6e;
+  margin-bottom:8px;
+  font-weight:600;
+}
+.club-room{
+  font-size:0.85rem;
+  color:#2c7a4d;
+  margin-bottom:10px;
+}
+.event-card p,
+.club-card p{
+  line-height:1.55;
+  color:#2c475c;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.read-more-hint{
+  margin-top:12px;
+  font-size:0.8rem;
+  color:#1a4a6e;
+  font-weight:500;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+/* ===== TEACHERS - УЛУЧШЕННЫЕ СТИЛИ ===== */
+.teacher-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:22px;
+  margin-top:20px;
+}
+.teacher-card{
+  background:#fff;
+  border-radius:28px;
+  padding:22px;
+  transition:0.2s;
+  box-shadow:0 5px 15px rgba(0,0,0,.03);
+  border:1px solid #edf2f7;
+  cursor:pointer;
+  position: relative;
+  overflow: hidden;
+}
+.teacher-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #ffcd4a;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+.teacher-card:hover::before {
+  transform: scaleY(1);
+}
+.teacher-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 30px rgba(0,0,0,.08);
+}
+.teacher-name{
+  font-size:1.2rem;
+  font-weight:800;
+  color:#1a4a6e;
+  margin-bottom:8px;
+}
+.teacher-post{
+  color:#2c7a4d;
+  font-weight:600;
+  font-size:0.85rem;
+  margin-bottom:8px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.teacher-phone{
+  color:#6b7280;
+  font-size:0.8rem;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:6px;
+}
+.teacher-room{
+  color:#1a4a6e;
+  font-size:0.8rem;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-weight:500;
+}
+.search-box-teacher{
+  display:flex;
+  gap:12px;
+  margin-bottom:28px;
+}
+.search-box-teacher input{
+  flex:1;
+  padding:14px 20px;
+  border-radius:60px;
+  border:1px solid #dce5f0;
+  font-size:1rem;
+  outline:none;
+  transition:0.2s;
+  font-family: Inter, sans-serif;
+}
+.search-box-teacher input:focus{
+  border-color:#ffcd4a;
+  box-shadow:0 0 0 2px rgba(255,205,74,0.2);
+}
+.search-box-teacher button{
+  padding:0 28px;
+  background:#ffcd4a;
+  border:none;
+  border-radius:60px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.2s;
+  font-family: Inter, sans-serif;
+}
+.search-box-teacher button:hover{
+  background:#e6b800;
+}
+
+/* ===== MAP / FLOOR PLANS - УЛУЧШЕННЫЕ СТИЛИ ===== */
+.map-container {
+  background: #fff;
+  border-radius: 32px;
+  padding: 30px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.05);
+  margin-bottom: 30px;
+}
+
+.floor-plan-3d {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  perspective: 1200px;
+}
+
+.floor-plan-3d .swiper {
+  width: 100%;
+  padding: 30px 0 50px;
+}
+
+.floor-plan-3d .swiper-slide {
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.floor-plan-3d .swiper-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.floor-plan-3d .swiper-slide-active img:hover {
+  transform: scale(1.02);
+  cursor: zoom-in;
+}
+
+.floor-plan-3d .swiper-button-next,
+.floor-plan-3d .swiper-button-prev {
+  color: #1a4a6e;
+  background: rgba(255,255,255,0.95);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.floor-plan-3d .swiper-button-next:hover,
+.floor-plan-3d .swiper-button-prev:hover {
+  background: #ffcd4a;
+  color: #1e2a41;
+  transform: scale(1.1);
+}
+
+.floor-plan-3d .swiper-pagination-bullet {
+  background: #1a4a6e;
+  opacity: 0.3;
+  width: 10px;
+  height: 10px;
+}
+
+.floor-plan-3d .swiper-pagination-bullet-active {
+  background: #ffcd4a;
+  opacity: 1;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.floor-info {
+  background: #f4f8fe;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.floor-info h4 {
+  color: #1a4a6e;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.floor-info p {
+  color: #4b6475;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.zoom-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  background: rgba(255,205,74,0.95);
+  color: #1e2a41;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.zoom-btn:hover {
+  transform: scale(1.1);
+  background: #ffcd4a;
+}
+
+/* Адаптивность карты */
+@media (max-width: 768px) {
+  .map-container {
+    padding: 20px;
+    border-radius: 24px;
+  }
+  .floor-plan-3d .swiper {
+    padding: 20px 0 40px;
+  }
+  .floor-plan-3d .swiper-button-next,
+  .floor-plan-3d .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+  }
+  .zoom-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+/* ===== FOOD CARDS - УЛУЧШЕННЫЕ ===== */
+.food-card {
+  background: #fff;
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.04);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.food-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px rgba(0,0,0,.08);
+  border-color: #ffcd4a;
+}
+
+.food-card .food-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.food-card .food-icon {
+  font-size: 48px;
+  background: #ffcd4a;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  flex-shrink: 0;
+}
+
+.food-card .food-icon i {
+  color: #1a4a6e;
+}
+
+.food-card .food-title h3 {
+  color: #1a4a6e;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.food-card .food-title p {
+  margin: 5px 0 0;
+  color: #2c7a4d;
+  font-size: 0.9rem;
+}
+
+.food-card .food-preview {
+  color: #4b6475;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.food-card .read-more-hint {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #edf2f7;
+}
+
+/* ===== MODAL - УЛУЧШЕННЫЙ ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+  backdrop-filter: blur(5px);
+  animation: modalFadeIn 0.3s;
+}
+
+.modal.open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 32px;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  position: relative;
+  animation: modalSlideIn 0.3s;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+  from { opacity: 0; transform: translateY(-50px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.close-modal {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #aaa;
+  transition: 0.2s;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-modal:hover {
+  color: #1a4a6e;
+  background: #f4f8fe;
+}
+
+.modal-content h2 {
+  color: #1a4a6e;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  padding-right: 30px;
+  font-weight: 800;
+}
+
+.modal-badge {
+  display: inline-block;
+  background: #ffcd4a;
+  padding: 6px 16px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.modal-detail {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f4fa;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.modal-detail i {
+  width: 30px;
+  color: #1a4a6e;
+  font-size: 1.1rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.modal-detail strong {
+  color: #0f2b3d;
+  margin-right: 10px;
+}
+
+.modal-detail-content {
+  color: #4b6475;
+  line-height: 1.6;
+}
+
+.modal-full-text {
+  line-height: 1.6;
+  color: #2c475c;
+  margin-top: 15px;
+}
+
+.modal-full-text p {
+  margin-bottom: 12px;
+}
+
+/* Floor plan zoom modal */
+#floorModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+#floorModal.open {
+  display: flex;
+}
+
+#floorModal img {
+  max-width: 95%;
+  max-height: 85vh;
+  border-radius: 16px;
+  object-fit: contain;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+#floorModalLabel {
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+#floorModalClose {
+  margin-top: 20px;
+  background: #ffcd4a;
+  color: #1e2a41;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 30px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+#floorModalClose:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(255,205,74,0.4);
+}
+/* Floor plan zoom modal */
+#floorModal .modal-content {
+  max-width: 95%;
+  max-height: 95vh;
+  background: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#floorModal img {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 16px;
+  cursor: zoom-out;
+}
+#floorModal #floorModalLabel {
+  margin-top: 15px;
+  font-weight: 700;
+  color: #1a4a6e;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* ===== DOCS ===== */
+.docs-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:25px;
+}
+.doc-card{
+  background:#fff;
+  border-radius:28px;
+  padding:24px;
+  box-shadow:0 10px 20px rgba(0,0,0,.05);
+  border:1px solid #edf2f7;
+  transition:0.25s;
+}
+.doc-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 18px 30px rgba(0,0,0,.08);
+}
+.doc-card i{
+  font-size:42px;
+  color:#1a4a6e;
+  margin-bottom:16px;
+}
+.doc-card h3{
+  margin-bottom:12px;
+  font-size:1.2rem;
+  color:#1a4a6e;
+}
+.doc-card p{
+  color:#4b6475;
+  margin-bottom:18px;
+  line-height:1.5;
+}
+.download-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 20px;
+  border-radius:40px;
+  background:#ffcd4a;
+  color:#1e2a41;
+  text-decoration:none;
+  font-weight:700;
+  transition:0.2s;
+  cursor:pointer;
+  border:none;
+  font-family:Inter,sans-serif;
+  font-size:0.9rem;
+}
+.download-btn:hover{
+  background:#1a4a6e;
+  color:#fff;
+}
+
+/* ===== QR ===== */
+.qr-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-top:20px;
+}
+.qr-card{
+  background:#fff;
+  padding:25px 20px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 10px 24px rgba(0,0,0,.05);
+  transition:0.25s;
+  border:1px solid #edf2f7;
+}
+.qr-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 30px rgba(0,0,0,.08);
+}
+.qr-card img{
+  width:150px;
+  height:150px;
+  margin-bottom:15px;
+}
+.qr-card p{
+  font-weight:700;
+  color:#1a4a6e;
+  line-height:1.4;
+}
+
+/* ===== SOCIAL ===== */
+.social-links-block{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+  margin-top:25px;
+}
+.social-card{
+  background:white;
+  border-radius:28px;
+  padding:22px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  text-decoration:none;
+  color:#1a4a6e;
+  font-weight:700;
+  transition:0.25s;
+  box-shadow:0 8px 18px rgba(0,0,0,0.05);
+  border:1px solid #eef2f8;
+}
+.social-card:hover{
+  transform:translateY(-5px);
+  background:#ffcd4a;
+  color:#0f2b3d;
+}
+.social-card i{
+  font-size:28px;
+}
+
+/* ===== AUTH ===== */
+.auth-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  backdrop-filter:blur(4px);
+}
+.auth-box{
+  width:420px;
+  max-width: 95%;
+  background:#fff;
+  border-radius:30px;
+  padding:35px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.auth-tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:25px;
+}
+.auth-tab{
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:40px;
+  cursor:pointer;
+  font-weight:700;
+  background:#eef3fb;
+  font-family: Inter, sans-serif;
+  transition: all 0.2s;
+}
+.auth-tab.active{
+  background:#ffcd4a;
+  color:#1e2a41;
+}
+.auth-input{
+  width:100%;
+  padding:14px;
+  border-radius:16px;
+  border:1px solid #d9e3ef;
+  margin-bottom:15px;
+  font-size:15px;
+  font-family: Inter, sans-serif;
+  transition: all 0.2s;
+}
+.auth-input:focus {
+  border-color: #ffcd4a;
+  box-shadow: 0 0 0 3px rgba(255,205,74,0.15);
+  outline: none;
+}
+.auth-btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:40px;
+  background:#0f2b3d;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.auth-btn:hover{
+  background:#1a4a6e;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== CMS ===== */
+.cms-admin-btn{
+  position:fixed;
+  left:20px;
+  bottom:20px;
+  z-index:999999;
+  background:#ffcd4a;
+  color:#1e293b;
+  padding:16px 22px;
+  border-radius:60px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 15px 40px rgba(0,0,0,.2);
+  font-family:Inter,sans-serif;
+  border: none;
+  transition: all 0.3s ease;
+}
+.cms-admin-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+.cms-panel{
+  position:fixed;
+  top:0;
+  right:-420px;
+  width:420px;
+  max-width: 100%;
+  height:100vh;
+  background:#fff;
+  z-index:999999;
+  transition:.4s;
+  overflow:auto;
+  padding:24px;
+  box-shadow:-10px 0 30px rgba(0,0,0,.15);
+  font-family:Inter,sans-serif;
+}
+.cms-panel.active{
+  right:0;
+}
+.cms-panel h2{
+  margin-bottom:20px;
+  color:#1a365d;
+}
+.cms-section{
+  margin-bottom:25px;
+  padding-bottom:20px;
+  border-bottom:1px solid #edf2f7;
+}
+.cms-section button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:16px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:10px;
+  font-family: Inter, sans-serif;
+  transition: all 0.2s;
+}
+.cms-save{
+  background:#0f172a;
+  color:#fff;
+}
+.cms-exit{
+  background:#e2e8f0;
+}
+.cms-delete{
+  background:#ef4444;
+  color:#fff;
+}
+.cms-add{
+  background:#22c55e;
+  color:#fff;
+}
+.cms-image-tools{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+.cms-image-tools button{
+  flex:1;
+}
+.edit-mode *{
+  outline:2px dashed transparent;
+  transition:.2s;
+}
+.edit-mode *:hover{
+  outline:2px dashed #ffcd4a;
+  cursor:text;
+}
+.edit-mode *[data-selected="true"]{
+  outline:3px solid #ef4444;
+}
+
+/* ===== PROFILE PAGE ===== */
+.profile-page-wrap {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+@media(max-width:900px){ .profile-page-wrap{ grid-template-columns:1fr; } }
+
+.profile-sidebar {
+  background: #fff;
+  border-radius: 32px;
+  padding: 36px 28px 28px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.06);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.profile-sidebar::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height: 110px;
+  background: linear-gradient(135deg,#0f2b3d,#1a4a6e);
+  z-index:0;
+}
+.avatar-wrap {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  margin-top: 30px;
+}
+.profile-avatar-lg {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffcd4a;
+  display: block;
+  background: #eee;
+}
+.avatar-edit-btn {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #ffcd4a;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #1e2a41;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  transition: .2s;
+}
+.avatar-edit-btn:hover { background:#e6b800; transform:scale(1.1); }
+
+.profile-name-big {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f2b3d;
+  margin: 16px 0 4px;
+}
+.profile-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #eef3fb;
+  color: #1a4a6e;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 5px 14px;
+  border-radius: 40px;
+  margin-bottom: 20px;
+}
+.profile-role-badge.admin { background:#fff3cd; color:#856404; }
+.profile-role-badge.teacher { background:#d1fae5; color:#065f46; }
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+.stat-box {
+  background: #f4f8fe;
+  border-radius: 18px;
+  padding: 14px 10px;
+  text-align: center;
+}
+.stat-box .stat-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1a4a6e;
+}
+.stat-box .stat-label {
+  font-size: 0.72rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.logout-btn-new {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 40px;
+  background: #fee2e2;
+  color: #dc2626;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: Inter, sans-serif;
+  font-size: 0.9rem;
+  transition: .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+.logout-btn-new:hover { background:#dc2626; color:#fff; }
+
+.profile-right { display: flex; flex-direction: column; gap: 22px; }
+
+.profile-section-card {
+  background: #fff;
+  border-radius: 28px;
+  padding: 26px 28px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.05);
+}
+.profile-section-card h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1a4a6e;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profile-section-card h3 i { color: #ffcd4a; }
+
+.profile-field {
+  margin-bottom: 16px;
+}
+.profile-field label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: 6px;
+  display: block;
+}
+.profile-field-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.profile-field input, .profile-field select {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 1.5px solid #dce5f0;
+  font-size: 0.95rem;
+  font-family: Inter, sans-serif;
+  color: #0f2b3d;
+  outline: none;
+  transition: .2s;
+  background: #f9fbfe;
+}
+.profile-field input:focus, .profile-field select:focus {
+  border-color: #ffcd4a;
+  box-shadow: 0 0 0 3px rgba(255,205,74,0.15);
+  background: #fff;
+}
+.profile-field input[readonly] {
+  background: #f4f8fe;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.field-edit-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background: #eef3fb;
+  color: #1a4a6e;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: .2s;
+  flex-shrink: 0;
+}
+.field-edit-btn:hover { background: #ffcd4a; color: #1e2a41; }
+.field-edit-btn.active { background: #ffcd4a; color: #1e2a41; }
+
+.profile-save-btn {
+  padding: 13px 28px;
+  border: none;
+  border-radius: 40px;
+  background: #0f2b3d;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: Inter, sans-serif;
+  font-size: 0.9rem;
+  transition: .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.profile-save-btn:hover { background: #1a4a6e; }
+
+.profile-notes {
+  width: 100%;
+  border-radius: 16px;
+  border: 1.5px solid #dce5f0;
+  padding: 14px 16px;
+  font-family: Inter, sans-serif;
+  font-size: 0.9rem;
+  color: #0f2b3d;
+  resize: vertical;
+  min-height: 90px;
+  outline: none;
+  transition: .2s;
+  background: #f9fbfe;
+}
+.profile-notes:focus { border-color: #ffcd4a; box-shadow: 0 0 0 3px rgba(255,205,74,0.15); background:#fff; }
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px,1fr));
+  gap: 12px;
+}
+.quick-link-btn {
+  background: #f4f8fe;
+  border: none;
+  border-radius: 18px;
+  padding: 16px 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: #1a4a6e;
+  transition: .2s;
+  text-align: center;
+}
+.quick-link-btn i { font-size: 22px; color: #1a4a6e; }
+.quick-link-btn:hover { background: #ffcd4a; color: #1e2a41; }
+.quick-link-btn:hover i { color: #1e2a41; }
+
+.activity-list { list-style: none; }
+.activity-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f4fa;
+  font-size: 0.88rem;
+  color: #374151;
+}
+.activity-list li:last-child { border-bottom: none; }
+.activity-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #eef3fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #1a4a6e;
+  flex-shrink: 0;
+}
+.activity-time {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+.pwd-fields { display: flex; flex-direction: column; gap: 12px; }
+
+/* ===== TOAST ===== */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #0f2b3d;
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  z-index: 999999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  animation: toastIn 0.3s ease;
+  max-width: 300px;
+}
+.toast.success { background: #22c55e; }
+.toast.error { background: #ef4444; }
+@keyframes toastIn {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* ===== FOOTER ===== */
+footer{
+  margin-top:50px;
+  background:#102b3f;
+  color:#c4d8e8;
+  padding:30px;
+  text-align:center;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media(max-width:760px){
+  .grid-cards{ grid-template-columns:1fr; }
+  .auth-box{ width:95%; padding: 25px; }
+  .teacher-grid{ grid-template-columns:1fr; }
+  .social-links-block{ grid-template-columns:1fr; }
+  .qr-grid{ grid-template-columns:1fr; }
+  .docs-grid{ grid-template-columns:1fr; }
+  .quick-nav-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .quick-nav-item { padding: 14px 8px; }
+  .quick-nav-item i { font-size: 22px; }
+  .hero-welcome { padding: 32px 22px; }
+  .hero-welcome h2 { font-size: 1.4rem; }
+  .hero-stats { gap: 12px; }
+  .hero-stat { padding: 12px 16px; min-width: 90px; }
+  .hero-stat .stat-num { font-size: 1.5rem; }
+  .section-title { font-size: 1.4rem; }
+  .modal-content { padding: 20px; width: 95%; }
+  .modal-content h2 { font-size: 1.4rem; }
+  .map-container { padding: 15px; }
+  .floor-plan-3d .swiper-slide { border-radius: 16px; }
+  .zoom-btn { top: 10px; right: 10px; width: 40px; height: 40px; }
+}
+
+@media(max-width:600px) {
+  .logo-text h1 { font-size: 1.1rem; }
+  .nav-links { gap: 7px; }
+  .nav-btn { padding: 8px 12px; font-size: 0.8rem; }
+  .profile-page-wrap { grid-template-columns: 1fr; }
+  .profile-sidebar { padding: 28px 20px 20px; }
+  .profile-avatar-lg { width: 100px; height: 100px; }
+  .quick-links { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== UTILITY ===== */
+.card{
+  background:#fff;
+  border-radius:28px;
+  padding:24px;
+  box-shadow:0 10px 20px rgba(0,0,0,.04);
+}
+
+.text-center { text-align: center; }
+.mb-20 { margin-bottom: 20px; }
+.mt-20 { margin-top: 20px; }
+.hidden { display: none !important; }
+</style>
+</head>
+
+<body>
+<div class="cms-admin-btn" id="cmsOpen" style="display: none;">👑 ADMIN</div>
+<div class="cms-panel" id="cmsPanel">
+<h2>CMS Панель</h2>
+<div class="cms-section">
+<button class="cms-save" onclick="enableEditing()">✏️ Редактировать сайт</button>
+<button class="cms-add" onclick="addSection()">➕ Добавить секцию</button>
+<button class="cms-delete" onclick="deleteSelected()">🗑 Удалить выбранный блок</button>
+<button class="cms-save" onclick="saveWebsite()">💾 Сохранить сайт</button>
+<button class="cms-exit" onclick="closeCMS()">Закрыть</button>
+</div>
+<div class="cms-section">
+<h3>Изображения</h3>
+<div class="cms-image-tools">
+<button onclick="replaceImage()">🖼 Заменить</button>
+<button onclick="removeImage()">❌ Удалить</button>
+</div>
+</div>
+<div class="cms-section">
+<h3>Цвет сайта</h3>
+<input type="color" id="siteColor" style="width:100%;height:50px;border:none;">
+<button onclick="changeMainColor()" class="cms-save">Изменить цвет</button>
+</div>
+</div>
+<div class="auth-overlay" id="authOverlay">
+<div class="auth-box">
+<div class="auth-tabs">
+<button class="auth-tab active" onclick="switchAuthTab('login')">Вход</button>
+<button class="auth-tab" onclick="switchAuthTab('register')">Регистрация</button>
+</div>
+<div id="loginTab">
+<h2 style="margin-bottom:20px;">Авторизация</h2>
+<select id="loginRole" class="auth-input">
+<option value="student">Студент</option>
+<option value="teacher">Преподаватель</option>
+<option value="admin">Администратор</option>
+</select>
+<input type="text" id="loginInput" class="auth-input" placeholder="Логин">
+<div style="position:relative; width:100%;">
+    <input type="password" id="passwordInput" class="auth-input" placeholder="Пароль" style="padding-right:50px;">
+    <span onclick="togglePasswordVisibility()" style="position:absolute; right:15px; top:50%; transform:translateY(-50%); cursor:pointer; color:#1a4a6e; font-size:20px;">
+        <i class="fas fa-eye" id="passwordToggleIcon"></i>
+    </span>
+</div>
+<label style="display:flex;align-items:center;gap:10px;margin-bottom:15px;font-weight:600;color:#1a4a6e;">
+<input type="checkbox" id="rememberMe"> Запомнить логин и пароль
+</label>
+<button class="auth-btn" onclick="loginUser()">Войти</button>
+<p id="loginMessage" style="margin-top:15px;"></p>
+</div>
+<div id="registerTab" style="display:none;">
+<h2 style="margin-bottom:20px;">Регистрация</h2>
+<input type="text" id="regName" class="auth-input" placeholder="ФИО">
+<input type="tel" id="regPhone" class="auth-input" placeholder="Номер телефона">
+<select id="regRole" class="auth-input">
+<option value="student">Студент</option>
+<option value="teacher">Преподаватель</option>
+</select>
+<button class="auth-btn" onclick="registerUser()">Зарегистрироваться</button>
+<p id="registerMessage" style="margin-top:15px;font-size:14px;"></p>
+</div>
+</div>
+</div>
+<header class="main-header">
+<div class="container">
+<div class="header-flex">
+<div class="logo-area">
+<div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+<div class="logo-text"><h1>Справочник студента</h1><p>ГАПОУ КК «ЛСПК»</p></div>
+</div>
+</div>
+<div class="nav-links">
+<button class="nav-btn active" onclick="showPage('home-page',this)">Главная</button>
+<button class="nav-btn" onclick="showPage('poster-page',this)">Мероприятия</button>
+<button class="nav-btn" onclick="showPage('clubs-page',this)">Кружки</button>
+<button class="nav-btn" onclick="showPage('teachers-page',this)">Преподаватели</button>
+<button class="nav-btn" onclick="showPage('map-page',this)">📍 Карта</button>
+<button class="nav-btn" onclick="showPage('docs-page',this)">Документы</button>
+<button class="nav-btn" onclick="showPage('qr-page',this)">QR-сервисы</button>
+<button class="nav-btn" onclick="showPage('food-page',this)">🍽️ Где поесть?</button>
+<button class="nav-btn" onclick="showPage('profile-page',this)"><i class="fas fa-user-circle"></i> Кабинет</button>
+</div>
+</div>
+</header>
+<main class="main-content container">
+
+<section id="home-page" class="page active-page">
+<div class="hero-welcome">
+  <h2>Добро пожаловать в цифровую экосистему ЛСПК!🕊️</h2>
+  <p>Здесь студенты получают современные знания, раскрывают таланты и участвуют в проектах, конкурсах и спортивной жизни колледжа. Наши преподаватели помогают каждому уверенно двигаться к профессии и добиваться успеха. Желаем отличной учёбы, вдохновения и незабываемых студенческих лет! ✨</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="stat-num">95</span><span class="stat-label">лет колледжу</span></div>
+    <div class="hero-stat"><span class="stat-num">30+</span><span class="stat-label">кружков и секций</span></div>
+    <div class="hero-stat"><span class="stat-num">2 основных</span><span class="stat-label">корпуса</span></div>
+    <div class="hero-stat"><span class="stat-num">1000+</span><span class="stat-label">студентов</span></div>
+  </div>
+</div>
+
+
+<div class="gallery-section"><div class="gallery-title"><i class="fas fa-images"></i><span>Фотогалерея колледжа</span></div>
+<div class="swiper mySwiper3D swiper-3d"><div class="swiper-wrapper">
+<div class="swiper-slide swiper-slide-3d"><img src="https://i.postimg.cc/XYhTWfpM/foto-1.jpg" alt="Фото 1" style="width:100%;height:100%;object-fit:cover;border-radius:32px;"></div>
+<div class="swiper-slide swiper-slide-3d"><img src="https://i.postimg.cc/nh56x4Cb/foto-2.jpg" alt="Фото 2" style="width:100%;height:100%;object-fit:cover;border-radius:32px;"></div>
+<div class="swiper-slide swiper-slide-3d"><img src="https://i.postimg.cc/6pSDKryN/foto-3.jpg" alt="Фото 3" style="width:100%;height:100%;object-fit:cover;border-radius:32px;"></div>
+<div class="swiper-slide swiper-slide-3d"><img src="https://i.postimg.cc/htwHnLfn/foto-4.jpg" alt="Фото 4" style="width:100%;height:100%;object-fit:cover;border-radius:32px;"></div>
+<div class="swiper-slide swiper-slide-3d"><img src="https://i.postimg.cc/rwbvT1Kq/foto-5.jpg" alt="Фото 5" style="width:100%;height:100%;object-fit:cover;border-radius:32px;"></div>
+<div class="swiper-slide swiper-slide-3d"><img src="https://i.postimg.cc/vZjpyrcH/foto-6.jpg" alt="Фото 6" style="width:100%;height:100%;object-fit:cover;border-radius:32px;"></div>
+<div class="swiper-slide swiper-slide-3d"><img src="https://i.postimg.cc/jS9GTHLx/foto-7.jpg" alt="Фото 7" style="width:100%;height:100%;object-fit:cover;border-radius:32px;"></div>
+<div class="swiper-slide swiper-slide-3d"><img src="https://i.postimg.cc/FHq2vy7F/foto-8.jpg" alt="Фото 8" style="width:100%;height:100%;object-fit:cover;border-radius:32px;"></div>
+<div class="swiper-slide swiper-slide-3d"><img src="https://i.postimg.cc/t4fLb3Y7/foto-9.jpg" alt="Фото 9" style="width:100%;height:100%;object-fit:cover;border-radius:32px;"></div>
+<div class="swiper-slide swiper-slide-3d"><img src="https://i.postimg.cc/qvY9rszq/foto-10.jpg" alt="Фото 10" style="width:100%;height:100%;object-fit:cover;border-radius:32px;"></div>
+</div><div class="swiper-pagination"></div></div><div class="swiper-pagination"></div></div>
+</section> 
+
+<section id="poster-page" class="page">
+  <div class="section-title">Мероприятия колледжа</div>
+  <div class="grid-cards">
+
+    <!-- 1. Преддипломная практика -->
+    <div class="event-card" 
+         data-title="Преддипломная практика — важнейший этап подготовки"
+         data-date="08 мая 2026 г."
+         data-desc="Преддипломная практика — важнейший этап подготовки будущих специалистов в сфере гостиничного дела и туризма. Для студентов, обучающихся по специальностям колледжа. Это возможность применить полученные знания на практике, освоить профессиональные навыки и подготовиться к самостоятельной работе. Студенты проходят практику в ведущих организациях отрасли, получают ценный опыт и рекомендации от наставников. Практика длится 4 недели и завершается защитой отчёта.">
+      <img class="event-img" src="https://i.postimg.cc/L8hrGC40/praktika.jpg" alt="Практика">
+      <div class="event-date-badge">08 мая 2026 г.</div>
+      <h3>Преддипломная практика — важнейший этап подготовки</h3>
+      <p>Преддипломная практика — важнейший этап подготовки будущих специалистов в сфере гостиничного дела и туризма. Для студентов, обучающихся по специальностям колледжа.</p>
+      <div class="read-more-hint"><i class="fas fa-calendar"></i> Практическая подготовка студентов</div>
+    </div>
+
+    <!-- 2. День Победы -->
+    <div class="event-card" 
+         data-title="Торжественная линейка ко Дню Победы"
+         data-date="08 мая 2026 г."
+         data-desc="В Ленинградском социально-педагогическом колледже прошла торжественная линейка, посвящённая 81-й годовщине Победы в Великой Отечественной войне. Студенты и преподаватели почтили память героев минутой молчания, возложили цветы к памятнику и прослушали трогательные стихи и песни военных лет. Мероприятие стало важной частью патриотического воспитания молодёжи.">
+      <img class="event-img" src="https://i.postimg.cc/NjLWZJGb/linejka-9maa.jpg" alt="День Победы">
+      <div class="event-date-badge">08 мая 2026 г.</div>
+      <h3>Торжественная линейка ко Дню Победы</h3>
+      <p>В Ленинградском социально-педагогическом колледже прошла торжественная линейка, посвящённая 81-й годовщине Победы в Великой Отечественной войне.</p>
+      <div class="read-more-hint"><i class="fas fa-star"></i> Патриотическое мероприятие</div>
+    </div>
+
+    <!-- 3. Калейдоскоп знаний -->
+    <div class="event-card" 
+         data-title="Краевая олимпиада «Калейдоскоп знаний»"
+         data-date="05 мая 2026 г."
+         data-desc="На базе Ейского полипрофильного колледжа состоялась краевая дистанционная олимпиада «Калейдоскоп знаний». Студенты ЛСПК приняли активное участие и показали высокие результаты. Олимпиада включала задания по профессиональным дисциплинам, логике и творческому мышлению. Победители получили дипломы и ценные призы.">
+      <img class="event-img" src="https://i.postimg.cc/T3hZB72V/kalejdoskop.jpg">
+      <div class="event-date-badge">05 мая 2026 г.</div>
+      <h3>Краевая олимпиада «Калейдоскоп знаний»</h3>
+      <p>На базе Ейского полипрофильного колледжа состоялась краевая дистанционная олимпиада «Калейдоскоп знаний».</p>
+      <div class="read-more-hint"><i class="fas fa-award"></i> Интеллектуальное соревнование</div>
+    </div>
+
+    <!-- 4. Учебная практика -->
+    <div class="event-card" 
+         data-title="Учебная практика «Туризм и гостеприимство»"
+         data-date="Май 2026"
+         data-desc="Студенты групп Г2А и Г2Б специальности 43.02.16 «Туризм и гостеприимство» проходят учебную практику по профессиональному модулю. В рамках практики студенты знакомятся с работой туристических агентств, гостиниц и экскурсионных бюро. Они учатся бронировать билеты, оформлять визы, составлять туристические маршруты и работать с клиентами.">
+      <img class="event-img" src="https://i.postimg.cc/P5cBHWNc/ucebnaa-praktika.jpg" alt="Туризм">
+      <div class="event-date-badge">Май 2026</div>
+      <h3>Учебная практика «Туризм и гостеприимство»</h3>
+      <p>Студенты групп Г2А и Г2Б специальности 43.02.16 «Туризм и гостеприимство» проходят учебную практику по профессиональному модулю.</p>
+      <div class="read-more-hint"><i class="fas fa-route"></i> Практическое обучение</div>
+    </div>
+
+    <!-- 5. Ангелы Ладоги -->
+    <div class="event-card" 
+         data-title="Просмотр фильма «Ангелы Ладоги»"
+         data-date="Апрель 2026"
+         data-desc="Студенты колледжа посетили кинотеатр «Горн», где в рамках программы «Пушкинская карта» состоялся просмотр фильма «Ангелы Ладоги». Фильм рассказывает о героической истории Ладожской военной флотилии и судьбах людей, защищавших нашу Родину. После просмотра студенты обсудили фильм и поделились впечатлениями.">
+      <img class="event-img" src="https://i.postimg.cc/BntdRYZd/prosmotr-fil'ma.webp" alt="Кино">
+      <div class="event-date-badge">Апрель 2026</div>
+      <h3>Просмотр фильма «Ангелы Ладоги»</h3>
+      <p>Студенты колледжа посетили кинотеатр «Горн», где в рамках программы «Пушкинская карта» состоялся просмотр фильма «Ангелы Ладоги».</p>
+      <div class="read-more-hint"><i class="fas fa-ticket-alt"></i> Культурное мероприятие</div>
+    </div>
+
+    <!-- 6. Вокальный конкурс -->
+    <div class="event-card" 
+         data-title="СТУДЕНЧЕСКАЯ НЕДЕЛЯ 2026 — Вокальный конкурс"
+         data-date="29 апреля 2026 г."
+         data-desc="В актовом зале колледжа прошёл яркий вокальный конкурс в рамках творческого фестиваля «Студенческая неделя 2026». Участники продемонстрировали талант, артистизм и сценическую культуру. Всего было 23 ярких выступления в разных номинациях: академический вокал, эстрада и народная песня. Победители получили грамоты и призы от организаторов.">
+      <img class="event-img" src="https://i.postimg.cc/gkgCSFp3/vokal'nyj.jpg" alt="Вокал">
+      <div class="event-date-badge">29 апреля 2026 г.</div>
+      <h3>СТУДЕНЧЕСКАЯ НЕДЕЛЯ 2026 — Вокальный конкурс</h3>
+      <p>В актовом зале колледжа прошёл яркий вокальный конкурс в рамках творческого фестиваля «Студенческая неделя 2026». Участники продемонстрировали талант, артистизм и сценическую культуру.</p>
+      <div class="read-more-hint"><i class="fas fa-microphone"></i> 23 ярких выступления</div>
+    </div>
+
+    <!-- 7. Спорт - теннис -->
+    <div class="event-card" 
+         data-title="Спортивная гордость колледжа — соревнования по настольному теннису"
+         data-date="24 и 27 апреля 2026 г."
+         data-desc="В колледже прошли соревнования по настольному теннису, посвящённые 95-летию колледжа. Участие приняли студенты всех отделений. Соревнования прошли в двух категориях: личное и командное первенство. Победители были награждены кубками, медалями и грамотами. Мероприятие способствовало популяризации здорового образа жизни.">
+      <img class="event-img" src="https://i.postimg.cc/YCjJTnqw/sport.jpg" alt="Теннис">
+      <div class="event-date-badge">24 и 27 апреля 2026 г.</div>
+      <h3>Спортивная гордость колледжа</h3>
+      <p>В колледже прошли соревнования по настольному теннису, посвящённые 95-летию колледжа.</p>
+      <div class="read-more-hint"><i class="fas fa-trophy"></i> Спортивные достижения</div>
+    </div>
+
+    <!-- 8. Всекубанская спартакиада -->
+    <div class="event-card" 
+         data-title="Всекубанская спартакиада по спортивному туризму"
+         data-date="22 апреля 2026 г."
+         data-desc="В городе Ейске состоялся второй этап Всекубанской спартакиады студенческих спортивных лиг по спортивному туризму. Команда ЛСПК достойно представила колледж, показав отличные результаты в ориентировании, технике туризма и командной работе. Соревнования объединили студентов со всего края.">
+      <img class="event-img" src="https://i.postimg.cc/jdMpg0TX/vsekubanskaa.webp" alt="Туризм спорт">
+      <div class="event-date-badge">22 апреля 2026 г.</div>
+      <h3>Всекубанская спартакиада по спортивному туризму</h3>
+      <p>В городе Ейске состоялся второй этап Всекубанской спартакиады студенческих спортивных лиг по спортивному туризму.</p>
+      <div class="read-more-hint"><i class="fas fa-hiking"></i> Спортивный туризм</div>
+    </div>
+
+    <!-- 9. Экология -->
+    <div class="event-card" 
+         data-title="Студенты-экогерои: сбор макулатуры и пластиковых крышечек"
+         data-date="Апрель 2026"
+         data-desc="Студенты и сотрудники колледжа приняли активное участие в экологической акции по сбору макулатуры и пластиковых крышечек. За месяц было собрано более 500 кг макулатуры и 100 кг крышечек. Все средства от сдачи вторсырья были направлены в благотворительный фонд помощи детям.">
+      <img class="event-img" src="https://i.postimg.cc/Sx5w46JX/ekologia.jpg" alt="Экология">
+      <div class="event-date-badge">Апрель 2026</div>
+      <h3>Студенты-экогерои</h3>
+      <p>Студенты и сотрудники колледжа приняли активное участие в экологической акции по сбору макулатуры и пластиковых крышечек.</p>
+      <div class="read-more-hint"><i class="fas fa-leaf"></i> Экологическая акция</div>
+    </div>
+
+    <!-- 10. Студенческая неделя -->
+    <div class="event-card" 
+         data-title="СТУДЕНЧЕСКАЯ НЕДЕЛЯ 2026 — время творчества и вдохновения"
+         data-date="С 23 апреля 2026 г."
+         data-desc="В колледже стартовал долгожданный творческий фестиваль «Студенческая неделя – 2026» — время творчества, вдохновения и ярких открытий. В программе: вокальные и танцевальные конкурсы, интеллектуальные игры, спортивные соревнования и многое другое. Каждый день недели был посвящён новому направлению.">
+      <img class="event-img" src="https://i.postimg.cc/4xMrG6n2/studenceskaanedela.jpg" alt="Студнеделя">
+      <div class="event-date-badge">С 23 апреля 2026 г.</div>
+      <h3>СТУДЕНЧЕСКАЯ НЕДЕЛЯ 2026</h3>
+      <p>В колледже стартовал долгожданный творческий фестиваль «Студенческая неделя – 2026» — время творчества, вдохновения и ярких открытий.</p>
+      <div class="read-more-hint"><i class="fas fa-star"></i> Творческий фестиваль</div>
+    </div>
+
+    <!-- 11. Дискотека -->
+    <div class="event-card" 
+         data-title="Дискотека ко Дню Земли"
+         data-date="22 апреля 2026 г."
+         data-desc="В ЦДМ «Шайба» прошла яркая праздничная дискотека, посвящённая Международному Дню Земли. Студенты танцевали, участвовали в конкурсах и викторинах на тему экологии. Мероприятие прошло в дружеской атмосфере и напомнило о важности бережного отношения к природе.">
+      <img class="event-img" src="https://i.postimg.cc/MpXhgPZy/diskoteka.webp" alt="Дискотека">
+      <div class="event-date-badge">22 апреля 2026 г.</div>
+      <h3>Дискотека ко Дню Земли</h3>
+      <p>В ЦДМ «Шайба» прошла яркая праздничная дискотека, посвящённая Международному Дню Земли.</p>
+      <div class="read-more-hint"><i class="fas fa-headphones"></i> Праздничное мероприятие</div>
+    </div>
+
+    <!-- 12. День открытых дверей -->
+    <div class="event-card" 
+         data-title="Единый день открытых дверей в рамках проекта «Профессионалитет»"
+         data-date="18 апреля 2026 г."
+         data-desc="В рамках федерального проекта «Профессионалитет» в колледже состоялся Единый день открытых дверей. Школьники и их родители познакомились с образовательными программами, посетили мастер-классы и экскурсии по лабораториям и мастерским. Более 300 будущих абитуриентов получили ответы на все вопросы.">
+      <img class="event-img" src="https://i.postimg.cc/QdVRv4N1/den'-otkrytyj-dverej.jpg" alt="День открытых дверей">
+      <div class="event-date-badge">18 апреля 2026 г.</div>
+      <h3>Единый день открытых дверей</h3>
+      <p>В рамках федерального проекта «Профессионалитет» в колледже состоялся Единый день открытых дверей.</p>
+      <div class="read-more-hint"><i class="fas fa-school"></i> Проект «Профессионалитет»</div>
+    </div>
+
+    <!-- 13. Капустник -->
+    <div class="event-card" 
+         data-title="«Спасибо за студенчество!»: Капустник выпускников"
+         data-date="9 июня 2026 г."
+         data-desc="В стенах Ленинградского социально-педагогического колледжа состоялся традиционный «Капустник» выпускников педагогического, дошкольного и среднего отделений — яркое, творческое и трогательное событие, ставшее символическим завершением студенческой жизни. Студенты подготовили оригинальные номера, в которых с юмором и теплотой рассказали о годах учёбы, вспоминали самые интересные моменты, своих преподавателей и друзей. Мероприятие прошло в атмосфере радости и лёгкой грусти.">
+      <img class="event-img" src="https://i.postimg.cc/sg1tb6f4/kapustnik.jpg" alt="Капустник">
+      <div class="event-date-badge">9 июня 2026 г.</div>
+      <h3>«Спасибо за студенчество!»: Капустник выпускников</h3>
+      <p>В стенах Ленинградского социально-педагогического колледжа состоялся традиционный «Капустник» выпускников педагогического, дошкольного и среднего отделений.</p>
+      <div class="read-more-hint"><i class="fas fa-heart"></i> Творческое событие</div>
+    </div>
+
+    <!-- 14. Последний звонок -->
+    <div class="event-card" 
+         data-title="Торжественная Линейка «Последний звонок – 2026»"
+         data-date="9 июня 2026 г."
+         data-desc="В Ленинградском социально-педагогическом колледже состоялась торжественная Линейка «Последний звонок – 2026», главными героями которой стали выпускники 16-ти групп педагогического, дошкольного и сервисного отделений. Звучали напутственные слова от директора, преподавателей и родителей. Выпускники поблагодарили колледж за годы учёбы, а первокурсники вручили им символические подарки.">
+      <img class="event-img" src="https://i.postimg.cc/4NWDLkG9/v-dobryj-put'.jpg" alt="Последний звонок">
+      <div class="event-date-badge">9 июня 2026 г.</div>
+      <h3>Торжественная Линейка «Последний звонок – 2026»</h3>
+      <p>В Ленинградском социально-педагогическом колледже состоялась торжественная Линейка «Последний звонок – 2026».</p>
+      <div class="read-more-hint"><i class="fas fa-bell"></i> Праздник выпускников</div>
+    </div>
+
+    <!-- 15. Изобретатель года -->
+    <div class="event-card" 
+         data-title="IV Всероссийский конкурс «Изобретатель года 2026»"
+         data-date="10 июня 2026 г."
+         data-desc="Открыт приём заявок на IV Всероссийский конкурс «Изобретатель года 2026». Победители и призёры будут определены по номинациям: Гран-при, Изобретатель года, Рационализатор года, Наставник года. К участию приглашаются изобретатели и рационализаторы всех возрастов: учёные, инженеры, студенты и школьники. Конкурс проводится при поддержке Министерства образования и науки РФ.">
+      <img class="event-img" src="https://i.postimg.cc/t47L8SRF/izobretatel'.jpg" alt="Изобретатель">
+      <div class="event-date-badge">10 июня 2026 г.</div>
+      <h3>IV Всероссийский конкурс «Изобретатель года 2026»</h3>
+      <p>Открыт приём заявок на IV Всероссийский конкурс «Изобретатель года 2026».</p>
+      <div class="read-more-hint"><i class="fas fa-trophy"></i> Всероссийский конкурс</div>
+    </div>
+
+    <!-- 16. День молодёжи -->
+    <div class="event-card" 
+         data-title="День молодёжи: Мечта. Гордость. Единство"
+         data-date="27 июня 2026 г."
+         data-desc="27 июня в Краснодаре пройдёт День молодёжи. Город подготовил насыщенную программу: спортивные активности, встречи с экспертами и интерактивные площадки для всех желающих. Завершится праздник большим концертом с молодёжными коллективами Кубани и приглашёнными звёздами. Приглашаются все студенты колледжа.">
+      <img class="event-img" src="https://i.postimg.cc/nhM6NRVD/den'-molodezi.jpg" alt="День молодежи">
+      <div class="event-date-badge">27 июня 2026 г.</div>
+      <h3>День молодёжи: Мечта. Гордость. Единство</h3>
+      <p>27 июня в Краснодаре пройдёт День молодёжи. Город подготовил насыщенную программу.</p>
+      <div class="read-more-hint"><i class="fas fa-star-of-life"></i> Городской праздник</div>
+    </div>
+
+    <!-- 17. Лента памяти -->
+    <div class="event-card" 
+         data-title="Всероссийский конкурс «Лента памяти»"
+         data-date="6 июня 2026 г."
+         data-desc="Группа ИА сервисного отделения вместе с преподавателем Стороженко Г.В. приняла участие во Всероссийском фестивале методических разработок по киноредактуре «Лента памяти». Студенты, побывавшие в кинотеатре, получили возможность познакомиться с материалами фильма «Помни имя своё» и обсудить вопросы педагогической работы на основе киноматериалов.">
+      <img class="event-img" src="https://i.postimg.cc/Z501X7YH/lenta-pamati.jpg" alt="Лента памяти">
+      <div class="event-date-badge">6 июня 2026 г.</div>
+      <h3>Всероссийский конкурс «Лента памяти»</h3>
+      <p>Группа ИА сервисного отделения вместе с преподавателем Стороженко Г.В. приняла участие во Всероссийском фестивале методических разработок по киноредактуре «Лента памяти».</p>
+      <div class="read-more-hint"><i class="fas fa-clapperboard"></i> Кинофестиваль</div>
+    </div>
+
+    <!-- 18. КВН -->
+    <div class="event-card" 
+         data-title="КВН. 2-е место! Гордость колледжа!"
+         data-date="5 июня 2026 г."
+         data-desc="В г. Краснодаре в Центре развития детей и молодежи Краснодарского края прошел финал фестиваля КВН профессиональных образовательных организаций Краснодарского края. Наш колледж представлял команда КВН «Локальный меч». По итогу фестиваля команда нашего колледжа заняла 2 место и получила кубок и диплом. Поздравляем наших ребят с блестящим выступлением!">
+      <img class="event-img" src="https://i.postimg.cc/cL6VP91c/kvn.jpg" alt="КВН">
+      <div class="event-date-badge">5 июня 2026 г.</div>
+      <h3>КВН. 2-е место!</h3>
+      <p>В г. Краснодаре в Центре развития детей и молодежи Краснодарского края прошел финал фестиваля КВН профессиональных образовательных организаций Краснодарского края.</p>
+      <div class="read-more-hint"><i class="fas fa-microphone-alt"></i> Гордость колледжа</div>
+    </div>
+
+  </div>
+</section>
+
+ <section id="clubs-page" class="page">
+  <div class="section-title">Кружки и секции ЛСПК</div>
+  <div class="grid-cards">
+
+    <!-- 1. Юность -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/7Zcp43f5/Unost'.jpg" alt="Юность">
+      <div class="club-schedule">Понедельник, Среда • 18:15</div>
+      <h3>Ансамбль эстрадной песни «Юность»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитория 533</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Бороздина Элеонора Ярославовна</div>
+      <p>Эстрадный вокал, сценическая подготовка и участие в концертах колледжа. Ансамбль является постоянным участником всех творческих мероприятий колледжа, лауреат краевых и всероссийских конкурсов.</p>
+    </div>
+
+    <!-- 2. Слава Отечества -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/Vk532Gsx/Slava-Otecestva.webp" alt="Слава Отечества">
+      <div class="club-schedule">Среда • 18:00</div>
+      <h3>Военно-спортивный клуб «Слава Отечества»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Тир</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Макарычев Александр Константинович</div>
+      <p>Военно-патриотическая подготовка, спортивные тренировки и командные соревнования. Клуб занимается строевой подготовкой, тактикой, стрельбой и физической подготовкой.</p>
+    </div>
+
+    <!-- 3. Фланкировка и рукопашный бой -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/13TLSG4L/flankirovki-i-rukopasnogo-boa.webp" alt="Фланкировка">
+      <div class="club-schedule">Вторник, Четверг • 20:00</div>
+      <h3>Кружок фланкировки и рукопашного боя</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Тир</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Проценко Валентина Алексеевна</div>
+      <p>Основы рукопашного боя, фланкировка и физическая подготовка. Фланкировка — искусство владения холодным оружием, которое требует высокой концентрации и мастерства.</p>
+    </div>
+
+    <!-- 4. Рандеву -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/52jZD79G/Randevu.webp" alt="Рандеву">
+      <div class="club-schedule">Вторник, Четверг • 19:00</div>
+      <h3>Вокальная группа «Рандеву»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитория 502</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Юрченко Марина Ивановна</div>
+      <p>Развитие вокальных навыков и участие в творческих мероприятиях. Группа специализируется на современных вокальных направлениях, джазе и поп-музыке.</p>
+    </div>
+
+    <!-- 5. Мир в объективе -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/cL6VP91b/mir-v-ob"ektive.webp" alt="Мир в объективе">
+      <div class="club-schedule">Вторник, Пятница • 18:00 / 19:00</div>
+      <h3>Кружок «Мир в объективе»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитории 501, 502</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Лысенко Дарья Алексеевна</div>
+      <p>Фотография, видеосъемка и создание визуального контента. Участники снимают все мероприятия колледжа, создают фотоотчёты и видеофильмы.</p>
+    </div>
+
+    <!-- 6. Акустика -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/280scRYv/VIA-Akustika.jpg" alt="Акустика">
+      <div class="club-schedule">Вторник, Четверг • 19:00</div>
+      <h3>ВИА «Акустика»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Подвал общежития (3 подъезд)</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Кучерявый Андрей Васильевич</div>
+      <p>Игра на музыкальных инструментах и живые выступления. Ансамбль играет в стилях рок, поп и авторская песня. Участники имеют возможность освоить гитару, ударные, бас и клавишные.</p>
+    </div>
+
+    <!-- 7. БлагоДарим -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/bNm7CcPD/blagodarim.webp" alt="БлагоДарим">
+      <div class="club-schedule">Вторник, Четверг • 18:00</div>
+      <h3>Волонтёрский кружок «БлагоДарим»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитория 534</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Тарасова Елена Ивановна</div>
+      <p>Благотворительные акции, помощь людям и социальные проекты. Волонтёры регулярно участвуют в городских и краевых благотворительных акциях.</p>
+    </div>
+
+    <!-- 8. БПЛА -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/SNgBTF4Y/BPLA.webp" alt="БПЛА">
+      <div class="club-schedule">Вторник • 18:30</div>
+      <h3>Кружок «БПЛА»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитория 538</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Багрий Егор Николаевич</div>
+      <p>Изучение беспилотных летательных аппаратов и основ управления дронами. Участники учатся собирать и настраивать квадрокоптеры, а также участвуют в соревнованиях.</p>
+    </div>
+
+    <!-- 9. Графический дизайн -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/L6xcCKSV/graficeskij-dizajn.jpg" alt="Графический дизайн">
+      <div class="club-schedule">Вторник, Четверг • 18:50</div>
+      <h3>Кружок «Графический дизайн»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитория 101</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Добровольская Анна Александровна</div>
+      <p>Создание дизайна, работа с графическими редакторами и цифровое творчество. Участники создают логотипы, баннеры, макеты сайтов и дизайн для социальных сетей.</p>
+    </div>
+
+    <!-- 10. Интернет вещей -->
+    <div class="club-card">
+      <img class="club-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop" alt="Интернет вещей">
+      <div class="club-schedule">Вторник, Четверг • 18:50</div>
+      <h3>Кружок «Интернет вещей»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитория 102</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Кузнецов Роман Романович</div>
+      <p>Изучение IoT-технологий, микроконтроллеров и умных устройств. Участники занимаются программированием Arduino и ESP8266, созданием систем «умный дом».</p>
+    </div>
+
+    <!-- 11. Веб-технологии -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/4NWDLkGc/Veb-tehnologii.jpg" alt="Веб-технологии">
+      <div class="club-schedule">Среда, Пятница • 18:50</div>
+      <h3>Кружок «Веб-технологии»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитория 101</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Кузнецов Константин Романович</div>
+      <p>Создание сайтов, основы HTML/CSS/JavaScript и веб-разработка. Участники создают собственные проекты — сайты и веб-приложения.</p>
+    </div>
+
+    <!-- 12. Искусство слова -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/t47L8SRd/isskustvo-slova.jpg" alt="Искусство слова">
+      <div class="club-schedule">Понедельник, Вторник • 18:45</div>
+      <h3>Литературно-театральный кружок «Искусство слова»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитория 138</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Скубаева Алина Александровна</div>
+      <p>Сценическая речь, актерское мастерство и литературные постановки. Участники ставят спектакли, читают стихи и прозу, участвуют в литературных конкурсах и фестивалях.</p>
+    </div>
+
+    <!-- 13. Медиацентр -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/Z501X7Yf/Mediacentr.jpg" alt="Медиацентр">
+      <div class="club-schedule">Среда • 18:00</div>
+      <h3>Медиацентр «ЛСПК.ru»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитория 213</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Новиков Александр Александрович, Келов Виталий Сергеевич</div>
+      <p>Создание новостей, фото- и видеоконтента для колледжа. Участники учатся работать с камерой, монтировать видео, писать тексты и создавать качественный контент.</p>
+    </div>
+
+    <!-- 14. Большая перемена -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/Nfd3Jqtr/bol'saa-peremena.jpg" alt="Большая перемена">
+      <div class="club-schedule">Четверг • 18:00</div>
+      <h3>Клуб «Большая перемена»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитория 201</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Новиков Александр Александрович</div>
+      <p>Проектная деятельность, лидерство и участие во всероссийских конкурсах. Участники создают собственные проекты, учатся работать в команде и презентовать идеи.</p>
+    </div>
+
+    <!-- 15. Истоки -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/NjLWZJG7/Istoki.jpg" alt="Истоки">
+      <div class="club-schedule">Вторник, Четверг • 18:30</div>
+      <h3>Ансамбль «Истоки»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитория 531</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Аксенов Владимир Федорович</div>
+      <p>Фольклорное и современное вокальное творчество. Ансамбль сохраняет народные традиции, исполняет фольклорные и современные песни.</p>
+    </div>
+
+    <!-- 16. Совет музея -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/mgh0KXZK/sovetmuzea.jpg" alt="Совет музея">
+      <div class="club-schedule">Среда, Пятница • 18:15</div>
+      <h3>Совет музея</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитория 104</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Стороженко Галина Висдомовна</div>
+      <p>Исследовательская работа, музейная деятельность и патриотические проекты. Участники учатся работать с архивными материалами и проводить исследования.</p>
+    </div>
+
+    <!-- 17. ART house -->
+    <div class="club-card">
+      <img class="club-img" src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&h=400&fit=crop" alt="ART house">
+      <div class="club-schedule">Вторник, Среда • 19:00</div>
+      <h3>Творческая мастерская «ART house»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Аудитория 502</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Филимонова Дана Александровна</div>
+      <p>Творческие проекты, художественные работы и оформление мероприятий. Участники работают в разных техниках: живопись, графика, цифровое искусство, скульптура.</p>
+    </div>
+
+    <!-- 18. Я-доброволец -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/nLDNhXDH/A-dobrovolec-Nadezda.jpg" alt="Я-доброволец">
+      <div class="club-schedule">Вторник, Пятница • 18:30</div>
+      <h3>Волонтерский кружок «Я-доброволец», «Надежда»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Кабинет 130</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Швецова Анастасия Владимировна</div>
+      <p>Социальное волонтерство и участие в благотворительных акциях. Добровольцы регулярно участвуют в городских социальных проектах.</p>
+    </div>
+
+    <!-- 19. Баскетбол девушки -->
+    <div class="club-card">
+      <img class="club-img" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Баскетбол девушки">
+      <div class="club-schedule">Вторник, Четверг • 18:00</div>
+      <h3>Секция «Баскетбол, девушки»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Спортзал (ауд. 123)</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Тронь Александр Васильевич</div>
+      <p>Тренировки по баскетболу и участие в спортивных соревнованиях. Команда регулярно занимает призовые места в краевых соревнованиях.</p>
+    </div>
+
+    <!-- 20. Баскетбол юноши -->
+    <div class="club-card">
+      <img class="club-img" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Баскетбол юноши">
+      <div class="club-schedule">Вторник, Четверг • 19:30</div>
+      <h3>Секция «Баскетбол, юноши»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Спортзал (ауд. 123)</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Тронь Александр Васильевич</div>
+      <p>Командные тренировки и соревнования по баскетболу. Команда — постоянный участник и призёр краевых и городских соревнований.</p>
+    </div>
+
+    <!-- 21. Велоспорт -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/m2mvXf4Q/velosport.jpg" alt="Велоспорт">
+      <div class="club-schedule">Пятница, Суббота • 18:00</div>
+      <h3>Секция «Велоспорт»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Территория колледжа</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Новикова Светлана Ивановна</div>
+      <p>Тренировки по велоспорту и развитие выносливости. Участники тренируются на территории колледжа и участвуют в велогонках.</p>
+    </div>
+
+    <!-- 22. Волейбол девушки -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/65MkjJKL/Volejbol-devuski.webp" alt="Волейбол девушки">
+      <div class="club-schedule">Понедельник, Среда • 19:30 / 18:00</div>
+      <h3>Секция «Волейбол, девушки»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Спортзал (ауд. 123)</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Криворучко Алексей Алексеевич</div>
+      <p>Командная игра, тренировки и участие в соревнованиях. Команда — призёр краевых соревнований по волейболу среди СПО.</p>
+    </div>
+
+    <!-- 23. Волейбол юноши -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/BQmrY93T/volejbol-unosi.webp" alt="Волейбол юноши">
+      <div class="club-schedule">Понедельник, Среда • 19:40 / 18:00</div>
+      <h3>Секция «Волейбол, юноши»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Спортзал (ауд. 123)</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Криворучко Алексей Алексеевич</div>
+      <p>Спортивные тренировки и развитие игровых навыков. Команда участвует в краевых и городских турнирах.</p>
+    </div>
+
+    <!-- 24. Настольный теннис -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/HkKfmwjN/tennis.webp" alt="Настольный теннис">
+      <div class="club-schedule">Вторник, Четверг • 17:10 / 18:00</div>
+      <h3>Секция «Настольный теннис»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Подвал общежития (3 подъезд)</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Фирса Олег Сергеевич</div>
+      <p>Тренировки по настольному теннису и спортивные турниры. Участники регулярно участвуют в турнирах разного уровня.</p>
+    </div>
+
+    <!-- 25. Стрельба -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/XYhTWfXH/strel'ba.jpg" alt="Стрельба">
+      <div class="club-schedule">Понедельник, Четверг • 17:00 / 18:00</div>
+      <h3>Секция «Стрельба»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Тир</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Новиков Александр Александрович</div>
+      <p>Подготовка по спортивной стрельбе и техника безопасности. Участники — постоянные победители краевых соревнований по пулевой стрельбе.</p>
+    </div>
+
+    <!-- 26. Спортивный туризм -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/t47L8SCG/sportivnyj-turizm.jpg" alt="Спортивный туризм">
+      <div class="club-schedule">Понедельник, Среда • 18:00</div>
+      <h3>Секция «Спортивный туризм»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Ритуальная площадка</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Клименко Ирина Михайловна</div>
+      <p>Походы, туристическая подготовка и спортивные маршруты. Участники участвуют в соревнованиях по спортивному туризму.</p>
+    </div>
+
+    <!-- 27. Уличные тренажеры -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/x17WQvq4/ulicnye-trenazery.jpg" alt="Уличные тренажеры">
+      <div class="club-schedule">Понедельник, Четверг • 18:00</div>
+      <h3>Уличные тренажеры</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Уличная площадка</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Пейсахович Александр Юрьевич</div>
+      <p>Общая физическая подготовка и занятия на тренажерах. Участники занимаются на уличных тренажёрах, выполняют функциональные упражнения.</p>
+    </div>
+
+    <!-- 28. Чир-спорт -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/6pSDKry3/cir-sport.jpg" alt="Чир-спорт">
+      <div class="club-schedule">Пятница • 19:00</div>
+      <h3>Секция «Чир-спорт»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Тир</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Чернова Яна Владиленовна</div>
+      <p>Танцевально-спортивные постановки и командные выступления. Команда выступает на спортивных мероприятиях и соревнованиях.</p>
+    </div>
+
+    <!-- 29. Линия жизни -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/L8hrGC4N/linia-zizni.jpg" alt="Линия жизни">
+      <div class="club-schedule">Вторник, Пятница • 18:00</div>
+      <h3>Ансамбль эстрадного танца «Линия жизни»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Кабинет 521</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Гирченко Татьяна Викторовна</div>
+      <p>Современная хореография и концертные выступления. Участники — постоянные участники и призёры хореографических конкурсов.</p>
+    </div>
+
+    <!-- 30. Шаг вперед -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/t4fLb3YY/sag-v-pered.jpg" alt="Шаг вперед">
+      <div class="club-schedule">Понедельник, Четверг • 19:30 / 19:00</div>
+      <h3>Танцевальный кружок «Шаг вперед»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Танцевальный зал</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Деревянко Дарья Романовна</div>
+      <p>Современные танцы и развитие сценической пластики. Участники создают танцевальные номера для мероприятий колледжа.</p>
+    </div>
+
+    <!-- 31. Течение ритма -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/g25fpVrB/tecenie-ritma.jpg" alt="Течение ритма">
+      <div class="club-schedule">Среда, Суббота • 18:00</div>
+      <h3>Танцевальный кружок «Течение ритма»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Танцевальный зал</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Троякова Полина Евгеньевна</div>
+      <p>Танцевальные постановки и ритмическая подготовка. Участники работают в разных жанрах: от классики до современных стилей.</p>
+    </div>
+
+    <!-- 32. DNG -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/02VTWRvr/DNG.jpg" alt="DNG">
+      <div class="club-schedule">Понедельник • 18:00 / Четверг • 17:00</div>
+      <h3>Танцевальный кружок «DNG»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Танцевальный зал</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Каракай Анастасия Алексеевна, Ильина Дарья Алексеевна</div>
+      <p>Современные танцевальные направления и сценические номера. Кружок фокусируется на уличных и современных танцевальных стилях.</p>
+    </div>
+
+    <!-- 33. Гармония -->
+    <div class="club-card">
+      <img class="club-img" src="https://i.postimg.cc/rFfBnXTN/garmonia.jpg" alt="Гармония">
+      <div class="club-schedule">Вторник, Четверг • 18:15</div>
+      <h3>Вокальный ансамбль «Гармония»</h3>
+      <div class="club-room"><i class="fas fa-location-dot"></i> Вокальная студия</div>
+      <div class="club-leader"><i class="fas fa-user"></i> Бороздина Элеонора Ярославовна</div>
+      <p>Эстрадный вокал, ансамблевое пение и участие в концертах. Участники регулярно выступают на концертах и конкурсах, представляя колледж на высоком уровне.</p>
+    </div>
+
+  </div>
+</section> 
+
+<section id="teachers-page" class="page">
+  <div class="section-title">Преподаватели колледжа</div>
+  <div class="search-box-teacher"><input type="text" id="teacherSearchInput" placeholder="Поиск преподавателя..." onkeyup="if(event.key==='Enter')filterTeachers()"><button id="teacherSearchBtn" onclick="filterTeachers()"><i class="fas fa-search"></i></button></div><div class="teacher-grid" id="teacherGrid">
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Аксенов Владимир Федорович</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 201</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-01</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Алисова Елена Ивановна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 202</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-02</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Архипенко Ирина Анатольевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 219</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-03</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Архипова Светлана Александровна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 203</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-04</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Асеева Ирина Николаевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 210</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-05</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Бойко Александр Сергеевич</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 216</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-06</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Багрий Егор Николаевич</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> лаб. 101</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-06</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Бороздина Элеонора Ярославовна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 204</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-07</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Быкова Анастасия Витальевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 205</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-08</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Великоднева Ирина Владимировна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 206</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-09</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Весельев Владимир Федорович</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 207</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-10</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Вышенцова Юлия Валерьевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 208</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-11</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Вяткина Елена Владимировна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 209</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-12</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Гайлис Наталья Борисовна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Заведующий практикой, Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 211</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-13</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Гвоздева Ирина Сергеевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Администратор, Методист, Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 212</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-14</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Гимиджиева Галина Владимировна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Особая должность, Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 213</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-15</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Гонтарь Инна Алексеевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 214</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-16</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Гонтарь Инна Николаевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 215</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-17</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Грицай Инна Александровна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 217</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-18</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Давыдова Людмила Вячеславовна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 218</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-19</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Денисова Наталья Андреевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 101</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-20</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Добровольская Анна Александровна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> секция в общежитии</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-21</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Донченко Евгения Анатольевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 102</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-22</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Дорохова Наталья Георгиевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 131</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-23</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Еремина Светлана Александровна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 154</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-24</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Запорожец Марина Святославовна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Заведующий отделением, Особая должность, Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 153</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-25</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Зуйченко Татьяна Владимировна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 139</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-26</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Иванов Иван Иванович</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Особая должность, Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 103</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-27</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Иванова Наталья Георгиевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Особая должность, Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 104</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-28</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Иващенко Елена Геннадьевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 105</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-29</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Карапетова Наталья Васильевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 126</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-30</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Картава Марианна Олеговна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Заведующий отделением, Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 150</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-31</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Клименко Людмила Витальевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 106</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-32</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Коновальчик Алена Сергеевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 107</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-33</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Конопацкая Екатерина Евгеньевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 108</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-34</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Коньшина Татьяна Александровна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 109</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-35</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Королюк Ирина Викторовна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 118</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-36</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Криворучко Алексей Алексеевич</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 110</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-37</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Кузнецов Роман Романович</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Администратор, Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> сервисная 119</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-38</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Кулагина Анна Николаевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 111</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-39</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Кулик Елена Николаевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 112</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-40</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Леготкина Светлана Владимировна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Заведующий отделением, Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 113</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-41</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Ловицкая Софья Олеговна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 114</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-42</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Лотышова Ирина Григорьевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 115</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-43</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Лысенко Дарья Алексеевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 116</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-44</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Ляшенко Марина Викторовна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 117</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-45</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Мазунина Наталья Викторовна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 120</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-46</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Макарычев Александр Константинович</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 402</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-47</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Макарычева Наталья Викторовна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 121</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-48</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Максимова Альбина Валерьевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 122</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-49</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Мальчикова София Сергеевна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 123</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-50</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Милушкин Артур Вадимович</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель, зам. директора</div><div class="teacher-room"><i class="fas fa-door-open"></i> лаб. 102, 105 </div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-50</div></div>
+<div class="teacher-card" onclick="openTeacherModal(this)"><div class="teacher-name">Харченко Марина Викторовна</div><div class="teacher-post"><i class="fas fa-user-tie"></i> Преподаватель, зав практики в сервисном отделении</div><div class="teacher-room"><i class="fas fa-door-open"></i> каб. 120,147</div><div class="teacher-phone"><i class="fas fa-phone"></i> +7 (901) 101-20-50</div></div>
+</div></section>
+<section id="map-page" class="page">
+  <div class="section-title">📍 Интерактивная карта колледжа</div>
+  <div class="card" style="margin-bottom:30px;">
+    <h3 style="margin-bottom:15px;color:#1a4a6e;">Схема территории ЛСПК</h3>
+    <div style="width:100%;overflow:hidden;border-radius:24px;box-shadow:0 10px 25px rgba(0,0,0,.08);">
+      <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7bdbbec96a7a04b33c03390c05676b9abe367f6205cf08aa297f8a33c8e952d7&amp;source=constructor" width="100%" height="500" frameborder="0" style="border:0;border-radius:24px;" allowfullscreen></iframe>
+    </div>
+  </div>
+  
+  <!-- НОВАЯ 3D ГАЛЕРЕЯ СХЕМ ЭТАЖЕЙ вместо статических изображений -->
+  <div class="card" style="margin-bottom:30px;">
+    <div class="gallery-title"><i class="fas fa-building"></i><span>3D-галерея схем этажей (свайп/стрелки)</span></div>
+    <div class="swiper floorSwiper" style="width:100%; overflow:hidden; padding:20px 0 50px;">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background: #fff; border-radius: 32px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
+          <img src="https://i.postimg.cc/3JrMFrsr/1-korpus-1-etaz.jpg" style="width:100%;height:340px;object-fit:contain;background:#f4f8fe;cursor:pointer;" onclick="openFloorModal(this.src, '📐 1 корпус — 1 этаж')">
+          <div style="padding:14px 16px; background:white; text-align:center; display:flex; align-items:center; justify-content:space-between;"><strong>📐 1 корпус — 1 этаж</strong><span style="font-size:0.75rem;color:#1a4a6e;cursor:pointer;" onclick="openFloorModal(this.closest('.swiper-slide').querySelector('img').src,'1 корпус — 2 этаж')">🔍 Увеличить</span></div>
+        </div>
+        <div class="swiper-slide" style="background: #fff; border-radius: 32px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
+          <img src="https://i.postimg.cc/8PZ2KQGP/1-korpus-2-etaz.jpg" alt="Схема 1 корпус 2 этаж" style="width:100%;height:340px;object-fit:contain;background:#f4f8fe;" cursor:pointer;" onclick="openFloorModal(this.src, '📐 1 корпус — 2 этаж')">
+          <div style="padding:14px 16px; background:white; text-align:center; display:flex; align-items:center; justify-content:space-between;"><strong>📐 1 корпус — 2 этаж</strong><span style="font-size:0.75rem;color:#1a4a6e;cursor:pointer;" onclick="openFloorModal(this.closest('.swiper-slide').querySelector('img').src,'1 корпус — 2 этаж')">🔍 Увеличить</span></div>
+        </div>
+        <div class="swiper-slide" style="background: #fff; border-radius: 32px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
+          <img src="https://i.postimg.cc/RVgks5mF/1-korpus-3-etaz.jpg" alt="Схема 1 корпус 3 этаж" style="width:100%;height:340px;object-fit:contain;background:#f4f8fe;" cursor:pointer;" onclick="openFloorModal(this.src, '📐 1 корпус — 3 этаж')">
+          <div style="padding:14px 16px; background:white; text-align:center; display:flex; align-items:center; justify-content:space-between;"><strong>📐 1 корпус — 3 этаж</strong><span style="font-size:0.75rem;color:#1a4a6e;cursor:pointer;" onclick="openFloorModal(this.closest('.swiper-slide').querySelector('img').src,'1 корпус — 3 этаж')">🔍 Увеличить</span></div>
+        </div>
+        <div class="swiper-slide" style="background: #fff; border-radius: 32px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
+          <img src="https://i.postimg.cc/CLc3PT0K/1-korpus-4-etaz.jpg" alt="Схема 1 корпус 4 этаж" style="width:100%;height:340px;object-fit:contain;background:#f4f8fe;" cursor:pointer;" onclick="openFloorModal(this.src, '📐 1 корпус — 4 этаж')">
+          <div style="padding:14px 16px; background:white; text-align:center; display:flex; align-items:center; justify-content:space-between;"><strong>📐 1 корпус — 4 этаж</strong><span style="font-size:0.75rem;color:#1a4a6e;cursor:pointer;" onclick="openFloorModal(this.closest('.swiper-slide').querySelector('img').src,'1 корпус — 4 этаж')">🔍 Увеличить</span></div>
+        </div>
+        <div class="swiper-slide" style="background: #fff; border-radius: 32px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
+          <img src="https://i.postimg.cc/L6xcCKS4/2-korpus-1-etaz.jpg" alt="Схема 2 корпус 1 этаж" style="width:100%;height:340px;object-fit:contain;background:#f4f8fe;" cursor:pointer;" onclick="openFloorModal(this.src, '📐 2 корпус — 1 этаж')">
+          <div style="padding:14px 16px; background:white; text-align:center; display:flex; align-items:center; justify-content:space-between;"><strong>📐 2 корпус — 1 этаж</strong><span style="font-size:0.75rem;color:#1a4a6e;cursor:pointer;" onclick="openFloorModal(this.closest('.swiper-slide').querySelector('img').src,'2 корпус — 1 этаж')">🔍 Увеличить</span></div>
+        </div>
+        <div class="swiper-slide" style="background: #fff; border-radius: 32px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
+          <img src="https://i.postimg.cc/SNgBTF4n/2-korpus-2-etaz.jpg" alt="Схема 2 корпус 2 этаж" style="width:100%;height:340px;object-fit:contain;background:#f4f8fe;" cursor:pointer;" onclick="openFloorModal(this.src, '📐 2 корпус — 2 этаж')">
+          <div style="padding:14px 16px; background:white; text-align:center; display:flex; align-items:center; justify-content:space-between;"><strong>📐 2 корпус — 2 этаж</strong><span style="font-size:0.75rem;color:#1a4a6e;cursor:pointer;" onclick="openFloorModal(this.closest('.swiper-slide').querySelector('img').src,'2 корпус — 2 этаж')">🔍 Увеличить</span></div>
+        </div>
+      </div>
+
+  </div>
+  
+ <!-- ===== ОПИСАНИЕ ЭТАЖЕЙ (АДАПТИВНАЯ СЕТКА) ===== -->
+<style>
+  .floors-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 30px 0;
+  }
+
+  /* ===== ОБЩАЯ КАРТОЧКА ===== */
+  .floor-card {
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+    border: 1px solid #eef2f7;
+  }
+  .floor-card-header {
+    padding: 14px 24px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .floor-card-header i {
+    color: #ffcd4a;
+  }
+  .floor-card-body {
+    padding: 18px 24px 22px;
+    background: #fafcff;
+  }
+
+  /* ===== СЕТКА ДЛЯ ЭТАЖЕЙ ===== */
+  .floors-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .floors-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .floors-grid-2-equal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* ===== ОДИН ЭТАЖ ===== */
+  .floor-item {
+    background: #f4f8fe;
+    border-radius: 14px;
+    padding: 12px 14px;
+    border-left: 4px solid #ffcd4a;
+    transition: transform 0.2s;
+  }
+  .floor-item:hover {
+    transform: translateY(-2px);
+  }
+  .floor-item .floor-label {
+    font-weight: 700;
+    color: #1a4a6e;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .floor-item .floor-label i {
+    color: #ffcd4a;
+    font-size: 14px;
+  }
+  .floor-item .rooms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+  }
+  .floor-item .rooms .room {
+    background: white;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #1a4a6e;
+    border: 1px solid #e2ecf5;
+  }
+  .floor-item .rooms .room.special {
+    background: #ffcd4a;
+    color: #1e2a41;
+    border-color: #e6b800;
+  }
+
+  /* ===== ТЕГИ ДЛЯ СПОРТА И ОБЩЕЖИТИЯ ===== */
+  .tags-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    padding: 4px 0;
+  }
+  .tags-group .tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.92rem;
+    color: #2c475c;
+    background: #f4f8fe;
+    padding: 6px 16px;
+    border-radius: 30px;
+    border: 1px solid #e2ecf5;
+  }
+  .tags-group .tag i {
+    color: #22c55e;
+    font-size: 15px;
+  }
+
+  /* ===== АДАПТИВНОСТЬ ===== */
+  @media (max-width: 992px) {
+    .floors-grid-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .floors-grid-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+    .floors-grid-2-equal {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .floor-card-header {
+      font-size: 1rem;
+      padding: 12px 18px;
+    }
+    .floor-card-body {
+      padding: 14px 16px 18px;
+    }
+    .floors-grid-4 {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .floors-grid-2 {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .floors-grid-2-equal {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .floor-item {
+      padding: 10px 12px;
+    }
+    .floor-item .floor-label {
+      font-size: 0.78rem;
+    }
+    .floor-item .rooms .room {
+      font-size: 0.7rem;
+      padding: 1px 8px;
+    }
+    .tags-group .tag {
+      font-size: 0.82rem;
+      padding: 4px 12px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .floors-grid-4 {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .floors-grid-2 {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .floors-grid-2-equal {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .floor-item {
+      padding: 8px 10px;
+    }
+    .floor-item .floor-label {
+      font-size: 0.7rem;
+    }
+    .floor-item .rooms .room {
+      font-size: 0.65rem;
+      padding: 1px 6px;
+    }
+  }
+</style>
+
+<div class="floors-layout">
+
+  <!-- ===== 1 КОРПУС — 4 ЭТАЖА В РЯД ===== -->
+  <div class="floor-card">
+    <div class="floor-card-header" style="background: linear-gradient(135deg, #0f2b3d, #1a4a6e);">
+      <i class="fas fa-building"></i> 1 корпус (Главный)
+    </div>
+    <div class="floor-card-body">
+      <div class="floors-grid-4">
+
+        <!-- 1 этаж -->
+        <div class="floor-item">
+          <div class="floor-label"><i class="fas fa-layer-group"></i> 1 этаж</div>
+          <div class="rooms">
+            <span class="room">103</span>
+            <span class="room">105</span>
+            <span class="room">107</span>
+            <span class="room">108</span>
+            <span class="room">114</span>
+            <span class="room">116</span>
+            <span class="room">101</span>
+            <span class="room">102</span>
+            <span class="room special">🍽️ Столовая</span>
+          </div>
+        </div>
+
+        <!-- 2 этаж -->
+        <div class="floor-item">
+          <div class="floor-label"><i class="fas fa-layer-group"></i> 2 этаж</div>
+          <div class="rooms">
+            <span class="room">117</span>
+            <span class="room">118</span>
+            <span class="room">119</span>
+            <span class="room">120</span>
+            <span class="room">122</span>
+            <span class="room">123</span>
+            <span class="room special">🎭 Актовый зал</span>
+          </div>
+        </div>
+
+        <!-- 3 этаж -->
+        <div class="floor-item">
+          <div class="floor-label"><i class="fas fa-layer-group"></i> 3 этаж</div>
+          <div class="rooms">
+            <span class="room">126</span>
+            <span class="room">127</span>
+            <span class="room">128</span>
+            <span class="room">129</span>
+            <span class="room">130</span>
+            <span class="room">131</span>
+            <span class="room">134</span>
+          </div>
+        </div>
+
+        <!-- 4 этаж -->
+        <div class="floor-item">
+          <div class="floor-label"><i class="fas fa-layer-group"></i> 4 этаж</div>
+          <div class="rooms">
+            <span class="room">136</span>
+            <span class="room">137</span>
+            <span class="room">138</span>
+            <span class="room">139</span>
+            <span class="room">140</span>
+            <span class="room">144</span>
+            <span class="room">145</span>
+            <span class="room">146</span>
+            <span class="room">147</span>
+            <span class="room">148</span>
+            <span class="room">149</span>
+            <span class="room">150</span>
+            <span class="room">151</span>
+            <span class="room">152</span>
+            <span class="room">153</span>
+            <span class="room">154</span>
+            <span class="room">155</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 2 КОРПУС — 2 ЭТАЖА В РЯД ===== -->
+  <div class="floor-card">
+    <div class="floor-card-header" style="background: linear-gradient(135deg, #1a4a6e, #2563a0);">
+      <i class="fas fa-building"></i> 2 корпус
+    </div>
+    <div class="floor-card-body">
+      <div class="floors-grid-2">
+
+        <!-- 1 этаж -->
+        <div class="floor-item">
+          <div class="floor-label"><i class="fas fa-layer-group"></i> 1 этаж</div>
+          <div class="rooms">
+            <span class="room">201</span>
+            <span class="room">202</span>
+            <span class="room">203</span>
+            <span class="room">204</span>
+            <span class="room">205</span>
+            <span class="room">206</span>
+            <span class="room">207</span>
+            <span class="room">208</span>
+            <span class="room">209</span>
+            <span class="room">210</span>
+          </div>
+        </div>
+
+        <!-- 2 этаж -->
+        <div class="floor-item">
+          <div class="floor-label"><i class="fas fa-layer-group"></i> 2 этаж</div>
+          <div class="rooms">
+            <span class="room">211</span>
+            <span class="room">212</span>
+            <span class="room">213</span>
+            <span class="room">214</span>
+            <span class="room">215</span>
+            <span class="room">216</span>
+            <span class="room">217</span>
+            <span class="room">218</span>
+            <span class="room">219</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== СПОРТИВНЫЙ КОМПЛЕКС + ОБЩЕЖИТИЕ В РЯД ===== -->
+  <div class="floors-grid-2-equal">
+
+    <!-- Спортивный комплекс -->
+    <div class="floor-card">
+      <div class="floor-card-header" style="background: linear-gradient(135deg, #2c6e2c, #1a4a1a);">
+        <i class="fas fa-dumbbell"></i> Уличный спортивный комплекс
+      </div>
+      <div class="floor-card-body">
+        <div class="tags-group">
+          <span class="tag"><i class="fas fa-check-circle"></i> Спортзал и каб.402</span>
+          <span class="tag"><i class="fas fa-check-circle"></i> Уличные тренажёры</span>
+          <span class="tag"><i class="fas fa-check-circle"></i> Уличная площадка</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Общежитие -->
+    <div class="floor-card">
+      <div class="floor-card-header" style="background: linear-gradient(135deg, #7c3aed, #5b21b6);">
+        <i class="fas fa-home"></i> Общежитие
+      </div>
+      <div class="floor-card-body">
+        <div class="tags-group">
+          <span class="tag"><i class="fas fa-check-circle"></i> Медицинский пункт</span>
+          <span class="tag"><i class="fas fa-check-circle"></i> Студенческое кафе</span>
+          <span class="tag"><i class="fas fa-check-circle"></i> Кружковые помещения</span>
+          <span class="tag"><i class="fas fa-check-circle"></i> Учебные секции</span>
+          <span class="tag"><i class="fas fa-check-circle"></i> Жилые секции</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+  
+</div>
+</section>
+
+ <section id="docs-page" class="page">
+  <div class="section-title">📄 Документы</div>
+  <div class="docs-grid">
+
+    <!-- 1. ПРАВИЛА ВНУТРЕННЕГО РАСПОРЯДКА -->
+    <div class="doc-card">
+      <i class="fas fa-file-pdf" style="color:#dc2626;"></i>
+      <h3>Правила внутреннего распорядка</h3>
+      <p>Правила поведения обучающихся колледжа, расписание звонков, требования к посещению занятий и внутренний распорядок ЛСПК.</p>
+      <button onclick="downloadDocument('Правила_внутреннего_распорядка.pdf')" class="download-btn" style="border: none; background: #ffcd4a; color: #1e2a41; padding: 12px 20px; border-radius: 40px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-family: Inter, sans-serif; font-size: 0.9rem; transition: 0.2s;">
+        <i class="fas fa-download"></i> Скачать PDF
+      </button>
+    </div>
+
+    <!-- 2. ЗАЯВЛЕНИЕ НА КРУЖОК -->
+    <div class="doc-card">
+      <i class="fas fa-file-pdf" style="color:#dc2626;"></i>
+      <h3>Заявление на зачисление в кружок</h3>
+      <p>Образец заявления для записи студента в кружок или секцию колледжа.</p>
+      <button onclick="downloadDocument('Заявление_на_кружок.pdf')" class="download-btn" style="border: none; background: #ffcd4a; color: #1e2a41; padding: 12px 20px; border-radius: 40px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-family: Inter, sans-serif; font-size: 0.9rem; transition: 0.2s;">
+        <i class="fas fa-download"></i> Скачать PDF
+      </button>
+    </div>
+
+    <!-- 3. ЗАЯВЛЕНИЕ ДЛЯ ПРОВЕДЕНИЯ КРУЖКА -->
+    <div class="doc-card">
+      <i class="fas fa-file-pdf" style="color:#dc2626;"></i>
+      <h3>Заявление для проведения кружков</h3>
+      <p>Образец заявления для предоставления зала и проведения кружковых занятий.</p>
+      <button onclick="downloadDocument('Заявление_для_проведения_кружка.pdf')" class="download-btn" style="border: none; background: #ffcd4a; color: #1e2a41; padding: 12px 20px; border-radius: 40px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-family: Inter, sans-serif; font-size: 0.9rem; transition: 0.2s;">
+        <i class="fas fa-download"></i> Скачать PDF
+      </button>
+    </div>
+
+    <!-- 4. ЗАЯВЛЕНИЕ ОТ РОДИТЕЛЯ -->
+    <div class="doc-card">
+      <i class="fas fa-file-pdf" style="color:#dc2626;"></i>
+      <h3>Заявление от родителя</h3>
+      <p>Образец заявления от родителя для освобождения студента от занятий.</p>
+      <button onclick="downloadDocument('Заявление_от_родителя.pdf')" class="download-btn" style="border: none; background: #ffcd4a; color: #1e2a41; padding: 12px 20px; border-radius: 40px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-family: Inter, sans-serif; font-size: 0.9rem; transition: 0.2s;">
+        <i class="fas fa-download"></i> Скачать PDF
+      </button>
+    </div>
+
+    <!-- 5. ЗАЯВЛЕНИЕ ОТ СТУДЕНТА -->
+    <div class="doc-card">
+      <i class="fas fa-file-pdf" style="color:#dc2626;"></i>
+      <h3>Заявление от студента</h3>
+      <p>Образец заявления студента для освобождения с занятий по уважительной причине.</p>
+      <button onclick="downloadDocument('Заявление_от_студента.pdf')" class="download-btn" style="border: none; background: #ffcd4a; color: #1e2a41; padding: 12px 20px; border-radius: 40px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-family: Inter, sans-serif; font-size: 0.9rem; transition: 0.2s;">
+        <i class="fas fa-download"></i> Скачать PDF
+      </button>
+    </div>
+
+    <!-- 6. РАСПИСАНИЕ ЗАНЯТИЙ (Excel) -->
+    <div class="doc-card">
+      <i class="fas fa-file-excel" style="color:#217346;"></i>
+      <h3>Расписание занятий</h3>
+      <p>Актуальное расписание учебных занятий для студентов колледжа на 2 полугодие 2025-2026 учебного года.</p>
+      <button onclick="downloadDocument('Расписание_занятий.xlsx')" class="download-btn" style="border: none; background: #ffcd4a; color: #1e2a41; padding: 12px 20px; border-radius: 40px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-family: Inter, sans-serif; font-size: 0.9rem; transition: 0.2s;">
+        <i class="fas fa-download"></i> Скачать Excel
+      </button>
+    </div>
+  </div>
+</section>
+  </div>
+</section>
+</section>
+<section id="food-page" class="page">
+<div class="section-title">🍽️ Где поесть? | Студенческие столовые и кафе</div>
+<div class="grid-cards">
+  <div class="card food-card" onclick="openFoodModal('canteen')" style="display:flex; flex-direction:column; gap:15px;cursor:pointer;transition:0.25s;">
+    <div style="display:flex; align-items:center; gap:15px;">
+      <div style="font-size:48px; background:#ffcd4a; width:70px; height:70px; display:flex; align-items:center; justify-content:center; border-radius:30px;"><i class="fas fa-utensils" style="color:#1a4a6e;"></i></div>
+      <div><h3 style="color:#1a4a6e; margin:0;">🍲 Столовая</h3><p style="margin:0; color:#2c7a4d;">Горячее питание каждый день</p></div>
+    </div>
+    <p><strong>Режим работы:</strong> Пн–Пт с 8:00 до 15:00<br><strong>Суббота и воскресенье:</strong> выходной</p>
+    <p><strong>🥗 Питание для первокурсников:</strong> Весь первый курс — <strong>обязательное питание (платное)</strong> (завтрак и обед). Студенты 2, 3 и 4 курсов, а так же преподователи и сотрудники могут питаться по желанию (самостоятельная покупка).</p>
+    <p><strong>⏰ График приёма пищи студентов:</strong><br>🍳 <strong>Завтрак:</strong> 9:35 – 10:05<br>🍽️ <strong>Обед:</strong> 11:40 – 12:10</p>
+    <p><strong>🍛 Меню:</strong> Горячие завтраки, сытные обеды (первое, второе, компот/чай), выпечка, салаты. Ежедневно на выбор 2–3 варианта горячих блюд.</p>
+    <div class="read-more-hint"><i class="fas fa-hand-pointer"></i> Нажмите для подробной информации</div>
+  </div>
+
+  <div class="card food-card" onclick="openFoodModal('buffet')" style="display:flex; flex-direction:column; gap:15px;cursor:pointer;transition:0.25s;">
+    <div style="display:flex; align-items:center; gap:15px;">
+      <div style="font-size:48px; background:#ffcd4a; width:70px; height:70px; display:flex; align-items:center; justify-content:center; border-radius:30px;"><i class="fas fa-mug-hot" style="color:#1a4a6e;"></i></div>
+      <div><h3 style="color:#1a4a6e; margin:0;">🥪 Студенческий буфет</h3><p style="margin:0; color:#2c7a4d;">Перекус и напитки</p></div>
+    </div>
+    <p><strong>Режим работы:</strong><br>📆 <strong>Будние дни:</strong> 8:00 – 18:00<br>📆 <strong>Суббота:</strong> 8:00 – 14:00<br>📆 <strong>Воскресенье:</strong> выходной</p>
+    <p><strong>🍎 Ассортимент:</strong> Булочки, сэндвичи, пицца, соки, чай, кофе, шоколад, снеки. Есть горячие напитки и выпечка.</p>
+    <div class="read-more-hint"><i class="fas fa-hand-pointer"></i> Нажмите для подробной информации</div>
+  </div>
+
+  <div class="card food-card" onclick="openFoodModal('cafe')" style="display:flex; flex-direction:column; gap:15px;cursor:pointer;transition:0.25s;">
+    <div style="display:flex; align-items:center; gap:15px;">
+      <div style="font-size:48px; background:#ffcd4a; width:70px; height:70px; display:flex; align-items:center; justify-content:center; border-radius:30px;"><i class="fas fa-mug-saucer" style="color:#1a4a6e;"></i></div>
+      <div><h3 style="color:#1a4a6e; margin:0;">☕ Студенческое кафе</h3><p style="margin:0; color:#2c7a4d;">Уютное место для отдыха</p></div>
+    </div>
+    <p><strong>Режим работы:</strong><br>📆 <strong>Будние дни:</strong> 8:00 – 15:00<br>📆 <strong>Суббота и воскресенье:</strong> выходной</p>
+    <p><strong>🍰 Меню:</strong> Ароматный кофе, чай, сладости, выпечка. Есть меню на выбор (готовая еда). Можно спокойно пообщаться или подготовиться к занятиям.</p>
+    <div class="read-more-hint"><i class="fas fa-hand-pointer"></i> Нажмите для подробной информации</div>
+  </div>
+</div>
+<div class="card" style="margin-top:30px; text-align:center;">
+  <i class="fas fa-info-circle" style="font-size:28px; color:#ffcd4a; margin-right:10px;"></i>
+  <strong>Важно:</strong> Оплата во всех точках питания — <strong>безналичная(карта)</strong> или наличный расчёт. Приятного аппетита!
+</div>
+</section>
+<section id="qr-page" class="page"><div class="section-title">QR-сервисы</div><div class="qr-grid"><div class="qr-card"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lspk31.gosuslugi.ru"><p>Сайт колледжа</p></div><div class="qr-card"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://vk.com/gapou_kk_lspk"><p>VK группа</p></div><div class="qr-card"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://max.ru/id2341008162_gos"><p>MAX портал</p></div><div class="qr-card"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://odolspk.ru/"><p>Сайт дополнительного образования</p></div><div class="qr-card"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://urait.ru/"><p>Электронная библиотека Юрайт</p></div></div><div class="gallery-title" style="margin-top:50px;"><i class="fas fa-link"></i><span>Официальные ресурсы</span></div><div class="social-links-block"><a href="https://lspk31.gosuslugi.ru/" target="_blank" class="social-card"><i class="fas fa-globe"></i><span>Официальный сайт</span></a><a href="https://vk.com/gapou_kk_lspk" target="_blank" class="social-card"><i class="fab fa-vk"></i><span>ВКонтакте ЛСПК</span></a><a href="https://max.ru/id2341008162_gos" target="_blank" class="social-card"><i class="fas fa-star"></i><span>MAX портал</span></a><a href="https://odolspk.ru/" target="_blank" class="social-card"><i class="fas fa-graduation-cap"></i><span>Дополнительное образование</span></a><a href="https://urait.ru/" target="_blank" class="social-card"><i class="fas fa-book"></i><span>Электронная библиотека Юрайт</span></a></div></section>
+<section id="profile-page" class="page">
+  <div class="section-title"><i class="fas fa-user-circle"></i> Личный кабинет</div>
+  
+  <div class="profile-page-wrap">
+    
+    <!-- SIDEBAR -->
+    <div class="profile-sidebar">
+      <div class="avatar-wrap">
+        <img id="profileAvatar" class="profile-avatar-lg"
+             src="https://ui-avatars.com/api/?background=ffcd4a&color=1e2a41&bold=true&size=120&font-size=50&name=User"
+             alt="Аватар">
+        <label for="avatarUpload" class="avatar-edit-btn" title="Сменить фото">
+          <i class="fas fa-camera"></i>
+        </label>
+        <input type="file" id="avatarUpload" accept="image/*" style="display:none;" onchange="handleAvatarUpload(this)">
+      </div>
+      
+      <div class="profile-name-big" id="profileName">Гость</div>
+      <div class="profile-role-badge" id="profileRoleBadge">
+        <i class="fas fa-id-card"></i> <span id="profileRole">Студент</span>
+      </div>
+
+      <div class="profile-stats">
+        <div class="stat-box">
+          <div class="stat-num" id="statDays">1</div>
+          <div class="stat-label">Дней в системе</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="statVisits">1</div>
+          <div class="stat-label">Визитов</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="statSections">9</div>
+          <div class="stat-label">Разделов</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">✅</div>
+          <div class="stat-label">Аккаунт активен</div>
+        </div>
+      </div>
+
+      <div style="font-size:0.8rem;color:#9ca3af;margin-bottom:16px;">
+        <i class="fas fa-clock" style="margin-right:5px;"></i>
+        Последний вход: <span id="profileLastLogin">—</span>
+      </div>
+
+      <button class="logout-btn-new" onclick="logoutUser()">
+        <i class="fas fa-sign-out-alt"></i> Выйти из аккаунта
+      </button>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="profile-right">
+
+      <!-- Personal info -->
+      <div class="profile-section-card">
+        <h3><i class="fas fa-user"></i> Личные данные</h3>
+
+        <div class="profile-field">
+          <label>ФИО</label>
+          <div class="profile-field-row">
+            <input type="text" id="fieldName" placeholder="Введите ФИО" readonly>
+            <button class="field-edit-btn" onclick="toggleFieldEdit('fieldName', this)" title="Редактировать">
+              <i class="fas fa-pen"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="profile-field">
+          <label>Номер телефона</label>
+          <div class="profile-field-row">
+            <input type="tel" id="fieldPhone" placeholder="+7 (XXX) XXX-XX-XX" readonly>
+            <button class="field-edit-btn" onclick="toggleFieldEdit('fieldPhone', this)" title="Редактировать">
+              <i class="fas fa-pen"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="profile-field">
+          <label>Логин</label>
+          <div class="profile-field-row">
+            <input type="text" id="fieldLogin" placeholder="—" readonly>
+          </div>
+        </div>
+
+        <!-- ГРУППА / СПЕЦИАЛЬНОСТЬ - ПОКАЗЫВАЕМ ТОЛЬКО ДЛЯ СТУДЕНТОВ -->
+        <div class="profile-field" id="groupField" style="display: none;">
+          <label>Группа / Специальность</label>
+          <div class="profile-field-row">
+            <input type="text" id="fieldGroup" placeholder="Например: И4Б / Информатика" readonly>
+            <button class="field-edit-btn" onclick="toggleFieldEdit('fieldGroup', this)" title="Редактировать">
+              <i class="fas fa-pen"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="profile-field">
+          <label>Email</label>
+          <div class="profile-field-row">
+            <input type="email" id="fieldEmail" placeholder="email@mail.ru" readonly>
+            <button class="field-edit-btn" onclick="toggleFieldEdit('fieldEmail', this)" title="Редактировать">
+              <i class="fas fa-pen"></i>
+            </button>
+          </div>
+        </div>
+
+        <button class="profile-save-btn" onclick="saveProfile()">
+          <i class="fas fa-save"></i> Сохранить изменения
+        </button>
+      </div>
+
+      <!-- Change password -->
+      <div class="profile-section-card">
+        <h3><i class="fas fa-lock"></i> Изменить пароль</h3>
+        <div class="pwd-fields">
+          <div class="profile-field" style="margin:0;">
+            <label>Текущий пароль</label>
+            <input type="password" id="pwdCurrent" placeholder="Введите текущий пароль" style="width:100%;">
+          </div>
+          <div class="profile-field" style="margin:0;">
+            <label>Новый пароль</label>
+            <input type="password" id="pwdNew" placeholder="Минимум 6 символов" style="width:100%;">
+          </div>
+          <div class="profile-field" style="margin:0;">
+            <label>Повторите новый пароль</label>
+            <input type="password" id="pwdConfirm" placeholder="Повторите пароль" style="width:100%;">
+          </div>
+          <div id="pwdMessage" style="font-size:0.85rem;min-height:20px;"></div>
+          <div>
+            <button class="profile-save-btn" onclick="changePassword()">
+              <i class="fas fa-key"></i> Изменить пароль
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity -->
+      <div class="profile-section-card">
+        <h3><i class="fas fa-history"></i> История активности</h3>
+        <ul class="activity-list" id="activityList">
+          <li>
+            <div class="activity-icon"><i class="fas fa-sign-in-alt"></i></div>
+            <div>
+              <div>Вход в систему</div>
+              <div class="activity-time" id="actLastLogin">—</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- Teacher Modal -->
+<div id="teacherModal" class="modal" onclick="if(event.target===this)closeModal('teacherModal')">
+  <div class="modal-content" style="max-width:650px;">
+    <span class="close-modal" onclick="closeModal('teacherModal')">&times;</span>
+    <div id="teacherModalBody"></div>
+  </div>
+</div>
+
+<!-- Food Modal -->
+<div id="foodModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal('foodModal')">&times;</span>
+    <h2>Информация о заведении</h2>
+    <div class="modal-body"></div>
+  </div>
+</div>
+<!-- Floor Plan Zoom Modal -->
+<div id="floorModal" class="modal">
+  <div class="modal-content" style="max-width: 95%; max-height: 95vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;">
+    <span class="close-modal" onclick="closeFloorModal()">&times;</span>
+    <img id="floorModalImg" src="" alt="Схема этажа" style="width: 100%; height: auto; max-height: 80vh; object-fit: contain; border-radius: 16px;">
+    <div id="floorModalLabel" style="margin-top: 15px; font-weight: 700; color: #1a4a6e; text-align: center; font-size: 1.1rem;">Схема этажа</div>
+  </div>
+</div>
+
+<<footer>
+<div class="container">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;text-align:left;margin-bottom:30px;">
+<div>
+<h3 style="color:#ffcd4a;font-size:1.2rem;margin-bottom:15px;font-weight:700;"><i class="fas fa-map-marker-alt"></i> Адрес</h3>
+<p style="line-height:1.7;margin-bottom:8px;"><a href="https://lspk31.gosuslugi.ru/kontakty/#shema-proezda" target="_blank" style="color:#c4d8e8;text-decoration:none;transition:.2s;">353740, Краснодарский край, Ленинградский округ, ст.Ленинградская ул.Красная 152</a></p>
+</div>
+<div>
+<h3 style="color:#ffcd4a;font-size:1.2rem;margin-bottom:15px;font-weight:700;"><i class="fas fa-phone"></i> Контактный телефон</h3>
+<p style="margin-bottom:8px;"><a href="tel:+78614570140" style="color:#c4d8e8;text-decoration:none;transition:.2s;">+7 (861) 457-01-40</a></p>
+</div>
+<div>
+<h3 style="color:#ffcd4a;font-size:1.2rem;margin-bottom:15px;font-weight:700;"><i class="fas fa-envelope"></i> Электронная почта</h3>
+<p style="margin-bottom:8px;"><a href="mailto:lpk31@mail.ru" style="color:#c4d8e8;text-decoration:none;transition:.2s;">lpk31@mail.ru</a></p>
+</div>
+<div>
+<h3 style="color:#ffcd4a;font-size:1.2rem;margin-bottom:15px;font-weight:700;"><i class="fas fa-clock"></i> Режим и график работы</h3>
+<p style="line-height:1.7;margin-bottom:5px;">пн — сб: 08:00—19:00</p>
+<p style="line-height:1.7;margin-bottom:5px;">вс: выходные</p>
+<p style="line-height:1.7;">праздничные дни — выходные</p>
+</div>
+</div>
+<div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;text-align:center;">
+<p style="margin:0;">© 2026 ГАПОУ КК «ЛСПК» | Справочник студента</p>
+</div>
+</div>
+</footer>
+
+<div id="detailModal" class="modal" onclick="closeDetailModal()">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeDetailModal()">&times;</span>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<!-- ==================== ЕДИНЫЙ JAVASCRIPT ==================== -->
+<script>
+// ==================== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ====================
+let currentUserRole = '';
+let currentUserLogin = '';
+// ===== Функция для получения ключа с префиксом роли =====
+function getRoleKey(baseKey) {
+    const role = localStorage.getItem('currentUserRole') || 'guest';
+    return role + '_' + baseKey;
+}
+let selectedElement = null;
+let swiperInstance = null;
+
+// ==================== БАЗА ДАННЫХ ПРЕПОДАВАТЕЛЕЙ ====================
+const teacherDetailsDB = {
+  'Аксенов Владимир Федорович': { fullName: 'Аксенов Владимир Федорович', post: 'Преподаватель', room: 'каб. 201', phone: '+7 (901) 101-20-01', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Алисова Елена Ивановна': { fullName: 'Алисова Елена Ивановна', post: 'Преподаватель', room: 'каб. 202', phone: '+7 (901) 101-20-02', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Архипенко Ирина Анатольевна': { fullName: 'Архипенко Ирина Анатольевна', post: 'Преподаватель', room: 'каб. 219', phone: '+7 (901) 101-20-03', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Архипова Светлана Александровна': { fullName: 'Архипова Светлана Александровна', post: 'Преподаватель', room: 'каб. 203', phone: '+7 (901) 101-20-04', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Асеева Ирина Николаевна': { fullName: 'Асеева Ирина Николаевна', post: 'Преподаватель', room: 'каб. 210', phone: '+7 (901) 101-20-05', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Бойко Александр Сергеевич': { fullName: 'Бойко Александр Сергеевич', post: 'Преподаватель', room: 'каб. 216', phone: '+7 (901) 101-20-06', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Багрий Егор Николаевич': { fullName: 'Багрий Егор Николаевич', post: 'Преподаватель', room: 'лаб. 101', phone: '+7 (901) 101-20-06', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Программирование, дроны, БПЛА', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Руководитель кружка БПЛА.' },
+  'Бороздина Элеонора Ярославовна': { fullName: 'Бороздина Элеонора Ярославовна', post: 'Преподаватель', room: 'каб. 204', phone: '+7 (901) 101-20-07', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Вокал, музыка, эстрадное пение', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Руководитель вокальных ансамблей.' },
+  'Быкова Анастасия Витальевна': { fullName: 'Быкова Анастасия Витальевна', post: 'Преподаватель', room: 'каб. 205', phone: '+7 (901) 101-20-08', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Великоднева Ирина Владимировна': { fullName: 'Великоднева Ирина Владимировна', post: 'Преподаватель', room: 'каб. 206', phone: '+7 (901) 101-20-09', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Весельев Владимир Федорович': { fullName: 'Весельев Владимир Федорович', post: 'Преподаватель', room: 'каб. 207', phone: '+7 (901) 101-20-10', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Вышенцова Юлия Валерьевна': { fullName: 'Вышенцова Юлия Валерьевна', post: 'Преподаватель', room: 'каб. 208', phone: '+7 (901) 101-20-11', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Вяткина Елена Владимировна': { fullName: 'Вяткина Елена Владимировна', post: 'Преподаватель', room: 'каб. 209', phone: '+7 (901) 101-20-12', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Гайлис Наталья Борисовна': { fullName: 'Гайлис Наталья Борисовна', post: 'Заведующий практикой, Преподаватель', room: 'каб. 211', phone: '+7 (901) 101-20-13', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Практика, производственное обучение', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Заведующий практикой.' },
+  'Гвоздева Ирина Сергеевна': { fullName: 'Гвоздева Ирина Сергеевна', post: 'Администратор, Методист, Преподаватель', room: 'каб. 212', phone: '+7 (901) 101-20-14', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Методика преподавания, педагогические технологии', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Администратор и методист.' },
+  'Гимиджиева Галина Владимировна': { fullName: 'Гимиджиева Галина Владимировна', post: 'Особая должность, Преподаватель', room: 'каб. 213', phone: '+7 (901) 101-20-15', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Особая должность.' },
+  'Гонтарь Инна Алексеевна': { fullName: 'Гонтарь Инна Алексеевна', post: 'Преподаватель', room: 'каб. 214', phone: '+7 (901) 101-20-16', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Гонтарь Инна Николаевна': { fullName: 'Гонтарь Инна Николаевна', post: 'Преподаватель', room: 'каб. 215', phone: '+7 (901) 101-20-17', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Грицай Инна Александровна': { fullName: 'Грицай Инна Александровна', post: 'Преподаватель', room: 'каб. 217', phone: '+7 (901) 101-20-18', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Давыдова Людмила Вячеславовна': { fullName: 'Давыдова Людмила Вячеславовна', post: 'Преподаватель', room: 'каб. 218', phone: '+7 (901) 101-20-19', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Денисова Наталья Андреевна': { fullName: 'Денисова Наталья Андреевна', post: 'Преподаватель', room: 'каб. 101', phone: '+7 (901) 101-20-20', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Добровольская Анна Александровна': { fullName: 'Добровольская Анна Александровна', post: 'Преподаватель', room: 'секция в общежитии', phone: '+7 (901) 101-20-21', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Графический дизайн, цифровое творчество', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Руководитель кружка графического дизайна.' },
+  'Донченко Евгения Анатольевна': { fullName: 'Донченко Евгения Анатольевна', post: 'Преподаватель', room: 'каб. 102', phone: '+7 (901) 101-20-22', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Дорохова Наталья Георгиевна': { fullName: 'Дорохова Наталья Георгиевна', post: 'Преподаватель', room: 'каб. 131', phone: '+7 (901) 101-20-23', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Еремина Светлана Александровна': { fullName: 'Еремина Светлана Александровна', post: 'Преподаватель', room: 'каб. 154', phone: '+7 (901) 101-20-24', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Запорожец Марина Святославовна': { fullName: 'Запорожец Марина Святославовна', post: 'Заведующий отделением, Особая должность, Преподаватель', room: 'каб. 153', phone: '+7 (901) 101-20-25', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Административная работа, организация учебного процесса', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Заведующий отделением.' },
+  'Зуйченко Татьяна Владимировна': { fullName: 'Зуйченко Татьяна Владимировна', post: 'Преподаватель', room: 'каб. 139', phone: '+7 (901) 101-20-26', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Иванов Иван Иванович': { fullName: 'Иванов Иван Иванович', post: 'Особая должность, Преподаватель', room: 'каб. 103', phone: '+7 (901) 101-20-27', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Особая должность.' },
+  'Иванова Наталья Георгиевна': { fullName: 'Иванова Наталья Георгиевна', post: 'Особая должность, Преподаватель', room: 'каб. 104', phone: '+7 (901) 101-20-28', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Особая должность.' },
+  'Иващенко Елена Геннадьевна': { fullName: 'Иващенко Елена Геннадьевна', post: 'Преподаватель', room: 'каб. 105', phone: '+7 (901) 101-20-29', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Карапетова Наталья Васильевна': { fullName: 'Карапетова Наталья Васильевна', post: 'Преподаватель', room: 'каб. 126', phone: '+7 (901) 101-20-30', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Картава Марианна Олеговна': { fullName: 'Картава Марианна Олеговна', post: 'Заведующий отделением, Преподаватель', room: 'каб. 150', phone: '+7 (901) 101-20-31', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Административная работа, организация учебного процесса', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Заведующий отделением.' },
+  'Клименко Людмила Витальевна': { fullName: 'Клименко Людмила Витальевна', post: 'Преподаватель', room: 'каб. 106', phone: '+7 (901) 101-20-32', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Коновальчик Алена Сергеевна': { fullName: 'Коновальчик Алена Сергеевна', post: 'Преподаватель', room: 'каб. 107', phone: '+7 (901) 101-20-33', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Конопацкая Екатерина Евгеньевна': { fullName: 'Конопацкая Екатерина Евгеньевна', post: 'Преподаватель', room: 'каб. 108', phone: '+7 (901) 101-20-34', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Коньшина Татьяна Александровна': { fullName: 'Коньшина Татьяна Александровна', post: 'Преподаватель', room: 'каб. 109', phone: '+7 (901) 101-20-35', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Королюк Ирина Викторовна': { fullName: 'Королюк Ирина Викторовна', post: 'Преподаватель', room: 'каб. 118', phone: '+7 (901) 101-20-36', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Криворучко Алексей Алексеевич': { fullName: 'Криворучко Алексей Алексеевич', post: 'Преподаватель', room: 'каб. 110', phone: '+7 (901) 101-20-37', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Физкультура, спорт, волейбол', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Тренер по волейболу.' },
+  'Кузнецов Роман Романович': { fullName: 'Кузнецов Роман Романович', post: 'Администратор, Преподаватель', room: 'сервисная 119', phone: '+7 (901) 101-20-38', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Интернет вещей, IoT, микроконтроллеры', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Руководитель кружка «Интернет вещей».' },
+  'Кулагина Анна Николаевна': { fullName: 'Кулагина Анна Николаевна', post: 'Преподаватель', room: 'каб. 111', phone: '+7 (901) 101-20-39', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Кулик Елена Николаевна': { fullName: 'Кулик Елена Николаевна', post: 'Преподаватель', room: 'каб. 112', phone: '+7 (901) 101-20-40', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Леготкина Светлана Владимировна': { fullName: 'Леготкина Светлана Владимировна', post: 'Заведующий отделением, Преподаватель', room: 'каб. 113', phone: '+7 (901) 101-20-41', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Административная работа, организация учебного процесса', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Заведующий отделением.' },
+  'Ловицкая Софья Олеговна': { fullName: 'Ловицкая Софья Олеговна', post: 'Преподаватель', room: 'каб. 114', phone: '+7 (901) 101-20-42', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Лотышова Ирина Григорьевна': { fullName: 'Лотышова Ирина Григорьевна', post: 'Преподаватель', room: 'каб. 115', phone: '+7 (901) 101-20-43', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Лысенко Дарья Алексеевна': { fullName: 'Лысенко Дарья Алексеевна', post: 'Преподаватель', room: 'каб. 116', phone: '+7 (901) 101-20-44', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Фотография, видеосъёмка, медиа', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Руководитель кружка «Мир в объективе».' },
+  'Ляшенко Марина Викторовна': { fullName: 'Ляшенко Марина Викторовна', post: 'Преподаватель', room: 'каб. 117', phone: '+7 (901) 101-20-45', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Мазунина Наталья Викторовна': { fullName: 'Мазунина Наталья Викторовна', post: 'Преподаватель', room: 'каб. 120', phone: '+7 (901) 101-20-46', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Макарычев Александр Константинович': { fullName: 'Макарычев Александр Константинович', post: 'Преподаватель', room: 'каб. 402', phone: '+7 (901) 101-20-47', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Физкультура, военно-патриотическая подготовка', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Руководитель военно-спортивного клуба.' },
+  'Макарычева Наталья Викторовна': { fullName: 'Макарычева Наталья Викторовна', post: 'Преподаватель', room: 'каб. 121', phone: '+7 (901) 101-20-48', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Максимова Альбина Валерьевна': { fullName: 'Максимова Альбина Валерьевна', post: 'Преподаватель', room: 'каб. 122', phone: '+7 (901) 101-20-49', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Мальчикова София Сергеевна': { fullName: 'Мальчикова София Сергеевна', post: 'Преподаватель', room: 'каб. 123', phone: '+7 (901) 101-20-50', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».' },
+  'Милушкин Артур Вадимович': { fullName: 'Милушкин Артур Вадимович', post: 'Преподаватель, зам. директора', room: 'лаб. 102, 105', phone: '+7 (901) 101-20-50', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Административная работа, специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Заместитель директора.' },
+  'Харченко Марина Викторовна': { fullName: 'Харченко Марина Викторовна', post: 'Преподаватель, зав практики в сервисном отделении', room: 'каб. 120,147', phone: '+7 (901) 101-20-50', email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Практика, производственное обучение', bio: 'Преподаватель ГАПОУ КК «ЛСПК». Заведующий практики сервисного отделения.' }
+};
+
+// ==================== ИНИЦИАЛИЗАЦИЯ ====================
+document.addEventListener('DOMContentLoaded', function() {
+  initApp();
+});
+
+function initApp() {
+  checkSavedSession();
+  initSwiper();
+  migrateOldProfileData();
+  loadProfileData();
+  toggleGroupField();
+  bindTeacherCardHandlers();  // 👈 ЭТА СТРОЧКА ДОБАВЛЕНА
+  bindCardClickHandlers();    // 👈 ЭТА СТРОЧКА ДОБАВЛЕНА
+  bindDownloadButtons();      // 👈 ЭТА СТРОЧКА ДОБАВЛЕНА
+}
+// ==================== СКАЧИВАНИЕ PDF ДОКУМЕНТОВ ====================
+function downloadPDF(filename) {
+  // Создаём ссылку для скачивания
+  const link = document.createElement('a');
+  link.href = filename;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  // Показываем уведомление
+  showToast('📄 Скачивание: ' + filename, 'success');
+}
+
+// ==================== СКАЧИВАНИЕ СТАРЫХ DOCX (оставляем как есть) ====================
+function bindDownloadButtons() {
+  document.querySelectorAll('.download-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const filename = this.getAttribute('data-filename');
+      const fileext = this.getAttribute('data-fileext');
+      const filecontent = this.getAttribute('data-filecontent');
+      if (filename && filecontent) {
+        const byteCharacters = atob(filecontent);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) byteNumbers[i] = byteCharacters.charCodeAt(i);
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = filename; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+        showToast('📄 Документ скачан: ' + filename, 'success');
+      }
+    });
+  });
+}
+// ==================== SWIPER ====================
+function initSwiper() {
+  if (typeof Swiper !== 'undefined' && document.querySelector('.mySwiper3D')) {
+    swiperInstance = new Swiper('.mySwiper3D', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop: true,
+      speed: 600,
+      autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true },
+      coverflowEffect: { rotate: 35, stretch: 0, depth: 150, modifier: 1.2, slideShadows: true },
+      pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      keyboard: { enabled: true },
+      breakpoints: {
+        320: { slidesPerView: 1.2, coverflowEffect: { rotate: 25, depth: 100, modifier: 1 } },
+        640: { slidesPerView: 1.5, coverflowEffect: { rotate: 30, depth: 120 } },
+        768: { slidesPerView: 2, coverflowEffect: { rotate: 35, depth: 150 } },
+        1024: { slidesPerView: 2.5, coverflowEffect: { rotate: 40, depth: 180 } },
+        1280: { slidesPerView: 3, coverflowEffect: { rotate: 45, depth: 200 } }
+      }
+    });
+  }
+  
+  // Floor plan swiper
+  if (typeof Swiper !== 'undefined' && document.querySelector('.floorSwiper')) {
+    new Swiper('.floorSwiper', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop: true,
+      speed: 500,
+      coverflowEffect: { rotate: 20, stretch: 0, depth: 200, modifier: 1, slideShadows: true },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      keyboard: { enabled: true },
+      breakpoints: { 320: { slidesPerView: 1.1 }, 640: { slidesPerView: 1.3 }, 768: { slidesPerView: 1.5 }, 1024: { slidesPerView: 2 } }
+    });
+  }
+}
+
+// ==================== НАВИГАЦИЯ ====================
+function showPage(pageId, btn) {
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active-page');
+    p.style.display = 'none';
+  });
+  const targetPage = document.getElementById(pageId);
+  if (targetPage) {
+    targetPage.classList.add('active-page');
+    targetPage.style.display = 'block';
+  }
+  if (btn) {
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  if (swiperInstance && pageId === 'home-page') {
+    setTimeout(() => swiperInstance.update(), 100);
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ==================== АВТОРИЗАЦИЯ ====================
+function switchAuthTab(tab) {
+  const loginTab = document.getElementById('loginTab');
+  const registerTab = document.getElementById('registerTab');
+  const tabs = document.querySelectorAll('.auth-tab');
+  tabs.forEach(t => t.classList.remove('active'));
+  if (tab === 'login') {
+    if (loginTab) loginTab.style.display = 'block';
+    if (registerTab) registerTab.style.display = 'none';
+    tabs[0].classList.add('active');
+  } else {
+    if (loginTab) loginTab.style.display = 'none';
+    if (registerTab) registerTab.style.display = 'block';
+    tabs[1].classList.add('active');
+  }
+}
+// ===== Функция для показа/скрытия пароля =====
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('passwordInput');
+    const icon = document.getElementById('passwordToggleIcon');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
+}
+function loginUser() {
+    let login = document.getElementById('loginInput').value.trim();
+    let pwd = document.getElementById('passwordInput').value;
+    let role = document.getElementById('loginRole').value;
+    let remember = document.getElementById('rememberMe').checked;
+    let msgDiv = document.getElementById('loginMessage');
+
+    if (login === '' || pwd === '') {
+        if (msgDiv) msgDiv.innerHTML = '<span style="color:#ef4444">Введите логин и пароль</span>';
+        return;
+    }
+
+    login = login.replace(/[<>"']/g, '');
+
+    // Админ
+    if (role === 'admin') {
+        if (login !== 'admin' || pwd !== 'admin123') {
+            if (msgDiv) msgDiv.innerHTML = '<span style="color:#ef4444">Неверный логин/пароль администратора</span>';
+            return;
+        }
+        currentUserRole = 'admin';
+        currentUserLogin = login;
+    } else {
+        let users = [];
+        try { users = JSON.parse(localStorage.getItem('registeredUsers') || '[]'); } catch (e) { users = []; }
+        let foundUser = users.find(u => u.login === login && u.password === pwd && u.role === role);
+        if (!foundUser) {
+            if (msgDiv) msgDiv.innerHTML = '<span style="color:#ef4444">Неверный логин, пароль или роль</span>';
+            return;
+        }
+        currentUserRole = role;
+        currentUserLogin = login;
+        // Эти строки больше не нужны, так как loadProfileData() загрузит данные с учётом роли
+        // if (!localStorage.getItem('profileName')) localStorage.setItem('profileName', foundUser.fullName || '');
+        // if (!localStorage.getItem('profilePhone')) localStorage.setItem('profilePhone', foundUser.phone || '');
+    }
+
+    if (remember) {
+        localStorage.setItem('savedLogin', login);
+        localStorage.setItem('savedPassword', pwd);
+        localStorage.setItem('rememberMe', 'true');
+        localStorage.setItem('savedRole', role);
+    } else {
+        localStorage.removeItem('savedLogin');
+        localStorage.removeItem('savedPassword');
+        localStorage.removeItem('rememberMe');
+        localStorage.removeItem('savedRole');
+    }
+
+    localStorage.setItem('currentUserRole', currentUserRole);
+    localStorage.setItem('currentUserLogin', currentUserLogin);
+    localStorage.setItem('lastLoginDate', new Date().toLocaleString('ru-RU'));
+
+    // 👇 ИСПОЛЬЗУЕМ getRoleKey() ДЛЯ СЧЁТЧИКА ВИЗИТОВ
+    let visits = parseInt(localStorage.getItem(getRoleKey('profileVisits')) || '0') + 1;
+    localStorage.setItem(getRoleKey('profileVisits'), visits);
+
+    if (msgDiv) msgDiv.innerHTML = '<span style="color:#22c55e">✅ Успешный вход!</span>';
+
+    setTimeout(() => {
+        const authOverlay = document.getElementById('authOverlay');
+        if (authOverlay) authOverlay.style.display = 'none';
+        const cmsOpen = document.getElementById('cmsOpen');
+        if (cmsOpen) cmsOpen.style.display = (currentUserRole === 'admin') ? 'flex' : 'none';
+        loadProfileData(); // Теперь загрузит данные с учётом роли
+         toggleGroupField();
+        showToast('Добро пожаловать, ' + currentUserLogin + '!', 'success');
+    }, 800);
+}
+// ===== Функция для переноса старых данных в новые ключи с префиксом роли =====
+function migrateOldProfileData() {
+    const role = localStorage.getItem('currentUserRole') || 'guest';
+    
+    // Список ключей, которые нужно перенести
+    const oldKeys = ['profileName', 'profilePhone', 'profileAvatar', 'profileGroup', 'profileEmail', 'profileVisits', 'profileFirstSeen'];
+    
+    oldKeys.forEach(key => {
+        const oldValue = localStorage.getItem(key);
+        const newKey = getRoleKey(key);
+        // Если есть старые данные и нет новых — переносим
+        if (oldValue && !localStorage.getItem(newKey)) {
+            localStorage.setItem(newKey, oldValue);
+        }
+    });
+}
+// ==================== РЕГИСТРАЦИЯ ====================
+// ==================== РЕГИСТРАЦИЯ ====================
+function registerUser() {
+    let fullName = document.getElementById('regName').value.trim();
+    let phone = document.getElementById('regPhone').value.trim();
+    let role = document.getElementById('regRole').value;
+    let msgDiv = document.getElementById('registerMessage');
+
+    // Проверка: все поля заполнены?
+    if (fullName === '' || phone === '') {
+        if (msgDiv) msgDiv.innerHTML = '<span style="color:#ef4444">❌ Заполните все поля</span>';
+        return;
+    }
+
+    // Защита от вредоносного кода
+    fullName = fullName.replace(/[<>"']/g, '');
+    phone = phone.replace(/[^0-9+\-\s()]/g, '');
+
+    // Получаем список зарегистрированных пользователей
+    let users = [];
+    try { 
+        users = JSON.parse(localStorage.getItem('registeredUsers') || '[]'); 
+    } catch (e) { 
+        users = []; 
+    }
+
+    // Проверка: есть ли уже такой номер телефона?
+    let existing = users.find(u => u.phone === phone);
+    if (existing) {
+        if (msgDiv) msgDiv.innerHTML = '<span style="color:#ef4444">❌ Пользователь с таким номером уже зарегистрирован</span>';
+        return;
+    }
+
+    // Генерируем логин из номера телефона (только цифры)
+    let login = phone.replace(/\D/g, '');
+    if (login.length < 4) {
+        login = 'user_' + Date.now().toString().slice(-6);
+    }
+    
+    // Генерируем пароль (pass_ + последние 4 цифры телефона)
+    let password = 'pass_' + phone.replace(/\D/g, '').slice(-4);
+
+    // Создаём нового пользователя
+    let newUser = { 
+        fullName: fullName, 
+        phone: phone, 
+        role: role, 
+        login: login, 
+        password: password, 
+        registeredAt: new Date().toISOString() 
+    };
+    
+    // Добавляем в список
+    users.push(newUser);
+    localStorage.setItem('registeredUsers', JSON.stringify(users));
+
+    // Показываем сообщение с логином и паролем
+    if (msgDiv) {
+        msgDiv.innerHTML = `
+            <span style="color:#22c55e">✅ Регистрация успешна!</span><br>
+            <strong>👤 Логин:</strong> ${login}<br>
+            <strong>🔑 Пароль:</strong> ${password}<br>
+            <span style="font-size:12px;color:#666;">Сохраните эти данные!</span>
+        `;
+    }
+
+    // 👇 АВТОМАТИЧЕСКИЙ ВХОД ПОСЛЕ РЕГИСТРАЦИИ (через 5 секунд)
+    setTimeout(function() {
+        // Автоматически входим
+        currentUserRole = role;
+        currentUserLogin = login;
+        
+        // Сохраняем в localStorage
+        localStorage.setItem('currentUserRole', role);
+        localStorage.setItem('currentUserLogin', login);
+        localStorage.setItem('lastLoginDate', new Date().toLocaleString('ru-RU'));
+        
+        // Счётчик визитов
+        let visits = parseInt(localStorage.getItem(getRoleKey('profileVisits')) || '0') + 1;
+        localStorage.setItem(getRoleKey('profileVisits'), visits);
+        
+        // Сохраняем имя и телефон из регистрации
+        localStorage.setItem(getRoleKey('profileName'), fullName);
+        localStorage.setItem(getRoleKey('profilePhone'), phone);
+        
+        // Закрываем окно авторизации
+        const authOverlay = document.getElementById('authOverlay');
+        if (authOverlay) authOverlay.style.display = 'none';
+        
+        // Показываем кнопку админа если нужно
+        const cmsOpen = document.getElementById('cmsOpen');
+        if (cmsOpen) cmsOpen.style.display = (role === 'admin') ? 'flex' : 'none';
+        
+        // Загружаем профиль
+        loadProfileData();
+        
+        // Показываем/скрываем поле группы
+        toggleGroupField();
+        
+        // Очищаем сообщение
+        if (msgDiv) msgDiv.innerHTML = '';
+        
+        // Показываем приветствие
+        showToast('🎉 Добро пожаловать, ' + fullName + '!', 'success');
+        
+    }, 5000); // 5 секунд на чтение логина и пароля
+}
+// ===== ПОКАЗЫВАЕМ/СКРЫВАЕМ ПОЛЕ ГРУППЫ В ЗАВИСИМОСТИ ОТ РОЛИ =====
+function toggleGroupField() {
+    const role = localStorage.getItem('currentUserRole') || 'guest';
+    const groupField = document.getElementById('groupField');
+    
+    if (groupField) {
+        // Показываем поле только для студентов
+        if (role === 'student') {
+            groupField.style.display = 'block';
+        } else {
+            groupField.style.display = 'none';
+        }
+    }
+}
+// ==================== ВЫХОД ====================
+function logoutUser() {
+  currentUserRole = '';
+  currentUserLogin = '';
+  localStorage.removeItem('currentUserRole');
+  localStorage.removeItem('currentUserLogin');
+  localStorage.removeItem('lastLoginDate');
+  localStorage.removeItem('rememberMe');
+  localStorage.removeItem('savedLogin');
+  localStorage.removeItem('savedPassword');
+  localStorage.removeItem('savedRole');
+
+  const cmsOpen = document.getElementById('cmsOpen');
+  if (cmsOpen) cmsOpen.style.display = 'none';
+  const cmsPanel = document.getElementById('cmsPanel');
+  if (cmsPanel) cmsPanel.classList.remove('active');
+
+  const authOverlay = document.getElementById('authOverlay');
+  if (authOverlay) {
+    authOverlay.style.display = 'flex';
+    switchAuthTab('login');
+  }
+
+  const loginInput = document.getElementById('loginInput');
+  const pwdInput = document.getElementById('passwordInput');
+  const loginMsg = document.getElementById('loginMessage');
+  if (loginInput) loginInput.value = '';
+  if (pwdInput) pwdInput.value = '';
+  if (loginMsg) loginMsg.innerHTML = '';
+
+  loadProfileData();
+  showToast('Вы вышли из системы', 'success');
+toggleGroupField();
+}
+
+// ==================== ПРОВЕРКА СЕССИИ ====================
+function checkSavedSession() {
+  const savedRole = localStorage.getItem('currentUserRole');
+  const savedLogin = localStorage.getItem('currentUserLogin');
+  if (savedRole && savedLogin) {
+    currentUserRole = savedRole;
+    currentUserLogin = savedLogin;
+    const authOverlay = document.getElementById('authOverlay');
+    if (authOverlay) authOverlay.style.display = 'none';
+    const cmsOpen = document.getElementById('cmsOpen');
+    if (cmsOpen) cmsOpen.style.display = (currentUserRole === 'admin') ? 'flex' : 'none';
+  }
+}
+
+function updateUIForRole() {
+  const cmsOpen = document.getElementById('cmsOpen');
+  if (cmsOpen) cmsOpen.style.display = (currentUserRole === 'admin') ? 'flex' : 'none';
+}
+
+// ==================== ПРЕПОДАВАТЕЛИ ====================
+function bindTeacherCardHandlers() {
+  document.querySelectorAll('.teacher-card').forEach(card => {
+    card.removeAttribute('onclick');
+    card.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      openTeacherModal(this);
+    });
+  });
+}
+
+function openTeacherModal(card) {
+  const name = card.querySelector('.teacher-name').textContent.trim();
+  const post = card.querySelector('.teacher-post').textContent.trim();
+  const room = card.querySelector('.teacher-room').textContent.trim();
+  const phone = card.querySelector('.teacher-phone')?.textContent.trim() || '';
+
+  const details = teacherDetailsDB[name] || {
+    fullName: name, post: post, room: room, phone: phone || 'Не указан',
+    email: 'Не указан', schedule: 'Пн–Пт: 8:00–17:00', subjects: 'Специальные дисциплины', bio: 'Преподаватель ГАПОУ КК «ЛСПК».'
+  };
+
+  const modal = document.getElementById('teacherModal');
+  const body = document.getElementById('teacherModalBody');
+  if (!modal || !body) return;
+
+  body.innerHTML = `
+    <h2>${details.fullName}</h2>
+    <span class="modal-badge">${details.post}</span>
+    <div class="modal-detail"><i class="fas fa-door-open"></i><div><strong>Кабинет:</strong> <span class="modal-detail-content">${details.room}</span></div></div>
+    <div class="modal-detail"><i class="fas fa-phone"></i><div><strong>Телефон:</strong> <span class="modal-detail-content">${details.phone}</span></div></div>
+    <div class="modal-detail"><i class="fas fa-envelope"></i><div><strong>Email:</strong> <span class="modal-detail-content">${details.email}</span></div></div>
+    <div class="modal-detail"><i class="fas fa-clock"></i><div><strong>Расписание:</strong> <span class="modal-detail-content">${details.schedule}</span></div></div>
+    <div class="modal-detail"><i class="fas fa-book"></i><div><strong>Предметы:</strong> <span class="modal-detail-content">${details.subjects}</span></div></div>
+    <div class="modal-full-text"><p><strong>О преподавателе:</strong></p><p>${details.bio}</p></div>
+  `;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(modalId) {
+  let modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+// ⬇️ ЭТО НОВАЯ ФУНКЦИЯ ⬇️
+function closeDetailModal() {
+  const modal = document.getElementById('detailModal');
+  if (modal) {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+function filterTeachers() {
+  let query = document.getElementById('teacherSearchInput').value.toLowerCase().trim();
+  let cards = document.querySelectorAll('.teacher-card');
+  cards.forEach(card => {
+    let text = card.innerText.toLowerCase();
+    card.style.display = text.includes(query) ? 'block' : 'none';
+  });
+}
+
+// ==================== КАРТОЧКИ МЕРОПРИЯТИЙ/КРУЖКОВ ====================
+function bindCardClickHandlers() {
+  document.querySelectorAll('.event-card').forEach(card => {
+    card.addEventListener('click', function() {
+      let title = this.querySelector('h3')?.innerText || 'Мероприятие';
+      let date = this.querySelector('.event-date-badge')?.innerText || '';
+      let desc = this.querySelector('p')?.innerText || '';
+      showDetailModal(title, date, desc);
+    });
+  });
+  document.querySelectorAll('.club-card').forEach(card => {
+    card.addEventListener('click', function() {
+      let title = this.querySelector('h3')?.innerText || 'Кружок';
+      let schedule = this.querySelector('.club-schedule')?.innerText || '';
+      let desc = this.querySelector('p')?.innerText || '';
+      showDetailModal(title, schedule, desc);
+    });
+  });
+}
+
+function showDetailModal(title, badge, description) {
+  const modal = document.getElementById('detailModal');
+  const body = document.getElementById('modalBody');
+  if (!modal || !body) return;
+  body.innerHTML = `<h2>${title}</h2><span class="modal-badge">${badge}</span><div class="modal-full-text"><p>${description}</p></div>`;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// ==================== ЕДА ====================
+function openFoodModal(type) {
+  const details = {
+    'canteen': { name: '🍲 Столовая', location: 'Корпус 1, 1 этаж', hours: 'Пн–Пт: 8:00–15:00', menu: 'Комплексный обед: первое, второе, салат, хлеб, напиток', price: '150–250 руб.', features: 'Студенческие цены, разнообразное меню, диетические блюда', phone: '+7 (861) 457-01-40 (доб. 101)' },
+    'buffet': { name: '🥪 Студенческий буфет', location: 'Корпус 1, 1 этаж', hours: 'Пн–Сб: 8:00–18:00 (вс: выходной)', menu: 'Булочки, сэндвичи, пицца, соки, чай, кофе, снеки', price: '50–150 руб.', features: 'Быстрый перекус, горячие напитки, выпечка', phone: '—' },
+    'cafe': { name: '☕ Студенческое кафе', location: 'Общежитие', hours: 'Пн–Пт: 8:00–15:00', menu: 'Кофе, чай, сладости, выпечка, готовые блюда', price: '100–300 руб.', features: 'Уютная атмосфера, Wi-Fi, место для учёбы', phone: '—' }
+  };
+  const d = details[type] || details['canteen'];
+  const modal = document.getElementById('foodModal');
+  const content = modal.querySelector('.modal-content');
+  if (!modal || !content) return;
+  content.innerHTML = `
+    <span class="close-modal" onclick="closeModal('foodModal')">&times;</span>
+    <h2>${d.name}</h2>
+    <span class="modal-badge">${d.location}</span>
+    <div class="modal-detail"><i class="fas fa-clock"></i><div><strong>Часы работы:</strong> <span class="modal-detail-content">${d.hours}</span></div></div>
+    <div class="modal-detail"><i class="fas fa-utensils"></i><div><strong>Меню:</strong> <span class="modal-detail-content">${d.menu}</span></div></div>
+    <div class="modal-detail"><i class="fas fa-tag"></i><div><strong>Цены:</strong> <span class="modal-detail-content">${d.price}</span></div></div>
+    <div class="modal-detail"><i class="fas fa-star"></i><div><strong>Особенности:</strong> <span class="modal-detail-content">${d.features}</span></div></div>
+    <div class="modal-detail"><i class="fas fa-phone"></i><div><strong>Телефон:</strong> <span class="modal-detail-content">${d.phone}</span></div></div>
+  `;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// ==================== ПЛАНЫ ЭТАЖЕЙ ====================
+function openFloorModal(imgSrc, label) {
+  const modal = document.getElementById('floorModal');
+  const img = document.getElementById('floorModalImg');
+  const labelEl = document.getElementById('floorModalLabel');
+  if (modal && img && labelEl) {
+    img.src = imgSrc;
+    labelEl.textContent = label || 'План этажа';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeFloorModal() {
+  const modal = document.getElementById('floorModal');
+  if (modal) {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+// ==================== ПРОФИЛЬ ====================
+function loadProfileData() {
+    // Получаем текущую роль
+    const role = localStorage.getItem('currentUserRole') || 'guest';
+    
+    // Загружаем данные с учётом роли (используем getRoleKey!)
+    const savedName = localStorage.getItem(getRoleKey('profileName')) || '';
+    const savedPhone = localStorage.getItem(getRoleKey('profilePhone')) || '';
+    const savedAvatar = localStorage.getItem(getRoleKey('profileAvatar'));
+    const savedGroup = localStorage.getItem(getRoleKey('profileGroup')) || '';
+    const savedEmail = localStorage.getItem(getRoleKey('profileEmail')) || '';
+    const lastLogin = localStorage.getItem('lastLoginDate') || '—';
+    const visits = parseInt(localStorage.getItem(getRoleKey('profileVisits')) || '0');
+
+    // Обновляем имя
+    const nameEl = document.getElementById('profileName');
+    if (nameEl) nameEl.innerText = savedName || localStorage.getItem('currentUserLogin') || 'Гость';
+
+    // Обновляем аватар
+    const avEl = document.getElementById('profileAvatar');
+    if (avEl) {
+        if (savedAvatar) avEl.src = savedAvatar;
+        else if (savedName) avEl.src = 'https://ui-avatars.com/api/?background=ffcd4a&color=1e2a41&bold=true&size=120&font-size=50&name=' + encodeURIComponent(savedName);
+    }
+
+    // Обновляем бейдж роли
+    let roleText = 'Студент', roleClass = '';
+    if (role === 'admin') { roleText = 'Администратор'; roleClass = 'admin'; }
+    else if (role === 'teacher') { roleText = 'Преподаватель'; roleClass = 'teacher'; }
+
+    const roleEl = document.getElementById('profileRole');
+    if (roleEl) roleEl.innerText = roleText;
+    const badgeEl = document.getElementById('profileRoleBadge');
+    if (badgeEl) badgeEl.className = 'profile-role-badge ' + roleClass;
+
+    // Заполняем поля формы
+    setFieldValue('fieldName', savedName);
+    setFieldValue('fieldPhone', savedPhone);
+    setFieldValue('fieldGroup', savedGroup);
+    setFieldValue('fieldEmail', savedEmail);
+    setFieldValue('fieldLogin', localStorage.getItem('currentUserLogin') || '');
+    
+
+    // Статистика
+    const visitsEl = document.getElementById('statVisits');
+    if (visitsEl) visitsEl.innerText = visits;
+    const loginDateEl = document.getElementById('profileLastLogin');
+    if (loginDateEl) loginDateEl.innerText = lastLogin;
+    const actLoginEl = document.getElementById('actLastLogin');
+    if (actLoginEl) actLoginEl.innerText = lastLogin;
+
+    // Дни в системе (тоже с учётом роли!)
+    let firstSeen = localStorage.getItem(getRoleKey('profileFirstSeen'));
+    if (!firstSeen) {
+        firstSeen = new Date().toISOString();
+        localStorage.setItem(getRoleKey('profileFirstSeen'), firstSeen);
+    }
+    const days = Math.max(1, Math.round((Date.now() - new Date(firstSeen)) / 86400000));
+    const daysEl = document.getElementById('statDays');
+    if (daysEl) daysEl.innerText = days;
+}
+
+function setFieldValue(id, value) {
+  const el = document.getElementById(id);
+  if (el) {
+    if (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT') el.value = value || '';
+    else el.innerText = value || '';
+  }
+}
+
+function toggleFieldEdit(fieldId, btn) {
+  const field = document.getElementById(fieldId);
+  if (!field || !btn) return;
+  const isReadonly = field.hasAttribute('readonly');
+  if (isReadonly) {
+    field.removeAttribute('readonly');
+    field.focus();
+    btn.classList.add('active');
+    btn.innerHTML = '<i class="fas fa-check"></i>';
+  } else {
+    field.setAttribute('readonly', true);
+    btn.classList.remove('active');
+    btn.innerHTML = '<i class="fas fa-pen"></i>';
+  }
+}
+
+function saveProfile() {
+    const name = document.getElementById('fieldName').value.trim().replace(/[<>"']/g, '');
+    const phone = document.getElementById('fieldPhone').value.trim().replace(/[^0-9+\-\s()]/g, '');
+    const group = document.getElementById('fieldGroup').value.trim().replace(/[<>"']/g, '');
+    const email = document.getElementById('fieldEmail').value.trim().replace(/[<>"']/g, '');
+
+    // Сохраняем данные
+    localStorage.setItem(getRoleKey('profileName'), name);
+    localStorage.setItem(getRoleKey('profilePhone'), phone);
+    localStorage.setItem(getRoleKey('profileGroup'), group);
+    localStorage.setItem(getRoleKey('profileEmail'), email);
+    
+    // 👇 НЕ ТРОГАЕМ АВАТАР! ОН УЖЕ СОХРАНЁН ОТДЕЛЬНО
+
+    // Обновляем интерфейс
+    const avEl = document.getElementById('profileAvatar');
+    const nameEl = document.getElementById('profileName');
+    if (nameEl) nameEl.innerText = name || localStorage.getItem('currentUserLogin') || 'Гость';
+    
+    // Если нет аватара — генерируем из имени
+    if (avEl && name) {
+        const savedAvatar = localStorage.getItem(getRoleKey('profileAvatar'));
+        if (savedAvatar) {
+            avEl.src = savedAvatar; // Сохраняем существующий аватар
+        } else {
+            avEl.src = 'https://ui-avatars.com/api/?background=ffcd4a&color=1e2a41&bold=true&size=120&font-size=50&name=' + encodeURIComponent(name);
+        }
+    }
+
+    // Снимаем режим редактирования
+    document.querySelectorAll('.field-edit-btn.active').forEach(btn => {
+        btn.classList.remove('active');
+        btn.innerHTML = '<i class="fas fa-pen"></i>';
+    });
+    document.querySelectorAll('#profile-page input:not([id="fieldLogin"])').forEach(inp => inp.setAttribute('readonly', true));
+
+    showToast('Профиль сохранён!', 'success');
+}
+
+
+function handleAvatarUpload(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+        const dataUrl = evt.target.result;
+        // 👇 ИСПОЛЬЗУЕМ getRoleKey() — ДОБАВЛЯЕТ ПРЕФИКС РОЛИ
+        localStorage.setItem(getRoleKey('profileAvatar'), dataUrl);
+        document.getElementById('profileAvatar').src = dataUrl;
+        showToast('Аватар обновлён!', 'success');
+    };
+    reader.readAsDataURL(file);
+}
+
+function changePassword() {
+  const current = document.getElementById('pwdCurrent').value;
+  const newPwd = document.getElementById('pwdNew').value;
+  const confirm = document.getElementById('pwdConfirm').value;
+  const msgDiv = document.getElementById('pwdMessage');
+
+  if (!current || !newPwd || !confirm) {
+    if (msgDiv) msgDiv.innerHTML = '<span style="color:#ef4444">Заполните все поля</span>';
+    return;
+  }
+  if (newPwd.length < 6) {
+    if (msgDiv) msgDiv.innerHTML = '<span style="color:#ef4444">Новый пароль должен быть не менее 6 символов</span>';
+    return;
+  }
+  if (newPwd !== confirm) {
+    if (msgDiv) msgDiv.innerHTML = '<span style="color:#ef4444">Пароли не совпадают</span>';
+    return;
+  }
+
+  const savedPwd = localStorage.getItem('savedPassword') || '';
+  const currentLogin = localStorage.getItem('currentUserLogin') || '';
+
+  if (currentLogin === 'admin' && current !== 'admin123') {
+    if (msgDiv) msgDiv.innerHTML = '<span style="color:#ef4444">Неверный текущий пароль</span>';
+    return;
+  }
+
+  let users = [];
+  try { users = JSON.parse(localStorage.getItem('registeredUsers') || '[]'); } catch (e) { users = []; }
+  const userIdx = users.findIndex(u => u.login === currentLogin && u.password === current);
+  if (currentLogin !== 'admin' && userIdx === -1 && current !== savedPwd) {
+    if (msgDiv) msgDiv.innerHTML = '<span style="color:#ef4444">Неверный текущий пароль</span>';
+    return;
+  }
+
+  if (currentLogin === 'admin') localStorage.setItem('adminPassword', newPwd);
+  else if (userIdx !== -1) { users[userIdx].password = newPwd; localStorage.setItem('registeredUsers', JSON.stringify(users)); }
+  localStorage.setItem('savedPassword', newPwd);
+
+  document.getElementById('pwdCurrent').value = '';
+  document.getElementById('pwdNew').value = '';
+  document.getElementById('pwdConfirm').value = '';
+  if (msgDiv) msgDiv.innerHTML = '<span style="color:#22c55e">✅ Пароль успешно изменён!</span>';
+  showToast('Пароль изменён!', 'success');
+}
+
+function quickNav(pageId) {
+  const btn = document.querySelector('.nav-btn[onclick*="' + pageId + '"]');
+  if (typeof showPage === 'function') showPage(pageId, btn);
+  else {
+    document.querySelectorAll('.page').forEach(p => { p.classList.remove('active-page'); p.style.display = 'none'; });
+    const target = document.getElementById(pageId);
+    if (target) { target.classList.add('active-page'); target.style.display = 'block'; }
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+// ==================== CMS ====================
+function openCMS() {
+  if (currentUserRole !== 'admin') { showToast('⛔ Доступно только администратору', 'error'); return; }
+  const cmsPanel = document.getElementById('cmsPanel');
+  if (cmsPanel) cmsPanel.classList.add('active');
+}
+
+function closeCMS() {
+  const cmsPanel = document.getElementById('cmsPanel');
+  if (cmsPanel) cmsPanel.classList.remove('active');
+}
+
+function enableEditing() {
+  if (currentUserRole !== 'admin') { showToast('⛔ Доступно только администратору', 'error'); return; }
+  document.body.classList.toggle('edit-mode');
+  const isEditing = document.body.classList.contains('edit-mode');
+  if (isEditing) {
+    const editable = document.querySelectorAll('h1,h2,h3,h4,h5,h6,p,a,span,div:not(.cms-panel):not(.cms-admin-btn):not(.auth-overlay):not(.modal),button:not(.cms-admin-btn):not(.nav-btn),li');
+    editable.forEach(el => {
+      if (!el.closest('.cms-panel') && !el.closest('.auth-overlay') && !el.closest('.modal')) {
+        el.contentEditable = true;
+        el.addEventListener('click', selectElementHandler);
+      }
+    });
+    showToast('✏️ Режим редактирования включён', 'success');
+  } else {
+    const editable = document.querySelectorAll('[contenteditable="true"]');
+    editable.forEach(el => { el.contentEditable = false; el.removeEventListener('click', selectElementHandler); });
+    showToast('Режим редактирования выключён', 'success');
+  }
+}
+
+function selectElementHandler(e) {
+  if (currentUserRole === 'admin') { selectedElement = this; e.stopPropagation(); }
+}
+
+function addSection() {
+  if (currentUserRole !== 'admin') { showToast('⛔ Недостаточно прав', 'error'); return; }
+  showToast('➕ Функция добавления секции в разработке', 'success');
+}
+
+function deleteSelected() {
+  if (currentUserRole !== 'admin') { showToast('⛔ Недостаточно прав', 'error'); return; }
+  if (selectedElement && confirm('Удалить выбранный элемент?')) {
+    selectedElement.remove(); selectedElement = null; showToast('🗑 Элемент удалён', 'success');
+  } else { showToast('Выберите элемент для удаления', 'error'); }
+}
+
+function saveWebsite() {
+  if (currentUserRole !== 'admin') { showToast('⛔ Недостаточно прав', 'error'); return; }
+  try { localStorage.setItem('full_site_backup', document.documentElement.innerHTML); showToast('💾 Сайт сохранён!', 'success'); }
+  catch (e) { showToast('❌ Ошибка сохранения: ' + e.message, 'error'); }
+}
+
+function replaceImage() {
+  if (currentUserRole !== 'admin') { showToast('⛔ Недостаточно прав', 'error'); return; }
+  showToast('🖼 Функция замены изображения в разработке', 'success');
+}
+
+function removeImage() {
+  if (currentUserRole !== 'admin') { showToast('⛔ Недостаточно прав', 'error'); return; }
+  showToast('❌ Функция удаления изображения в разработке', 'success');
+}
+
+function changeMainColor() {
+  if (currentUserRole !== 'admin') { showToast('⛔ Недостаточно прав', 'error'); return; }
+  let color = document.getElementById('siteColor').value;
+  document.documentElement.style.setProperty('--main-color', color);
+  showToast('🎨 Цвет изменён!', 'success');
+}
+
+// ==================== TOAST ====================
+function showToast(message, type) {
+  const oldToasts = document.querySelectorAll('.toast');
+  oldToasts.forEach(t => t.remove());
+  const toast = document.createElement('div');
+  toast.className = 'toast ' + (type || '');
+  toast.innerHTML = '<i class="fas ' + (type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle') + '" style="margin-right:8px;"></i>' + message;
+  document.body.appendChild(toast);
+  setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateY(20px)'; setTimeout(() => toast.remove(), 300); }, 3000);
+}
+
+// ==================== СКАЧИВАНИЕ ДОКУМЕНТОВ ====================
+function bindDownloadButtons() {
+  document.querySelectorAll('.download-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const filename = this.getAttribute('data-filename');
+      const fileext = this.getAttribute('data-fileext');
+      const filecontent = this.getAttribute('data-filecontent');
+      if (filename && filecontent) {
+        const byteCharacters = atob(filecontent);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) byteNumbers[i] = byteCharacters.charCodeAt(i);
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = filename; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+        showToast('📄 Документ скачан: ' + filename, 'success');
+      }
+    });
+  });
+}
+
+// ==================== ОБРАБОТЧИКИ МОДАЛОК ====================
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal') && e.target.classList.contains('open')) {
+    e.target.classList.remove('open'); document.body.style.overflow = '';
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal.open').forEach(m => { m.classList.remove('open'); });
+    document.body.style.overflow = '';
+  }
+});
+
+// ==================== CMS BUTTON ====================
+document.getElementById('cmsOpen').addEventListener('click', openCMS);
+
+console.log('✅ Справочник студента ЛСПК загружен');
+console.log('👑 Админ: login=admin, password=admin123');
+// ==================== СКАЧИВАНИЕ ДОКУМЕНТОВ (РАБОЧАЯ ВЕРСИЯ) ====================
+function downloadDocument(filename) {
+    // Показываем уведомление
+    showToast('📄 Начинаем скачивание: ' + filename, 'success');
+    
+    try {
+        // Создаём скрытую ссылку
+        const link = document.createElement('a');
+        link.href = filename;
+        link.download = filename;
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        
+        // Запускаем скачивание
+        link.click();
+        
+        // Удаляем ссылку
+        setTimeout(() => {
+            document.body.removeChild(link);
+        }, 100);
+        
+        showToast('✅ Скачивание начато: ' + filename, 'success');
+        
+    } catch (error) {
+        console.error('Ошибка при скачивании:', error);
+        showToast('❌ Ошибка при скачивании файла', 'error');
+    }
+}
+
+// Переопределяем старую функцию, чтобы не было конфликтов
+function downloadPDF(filename) {
+    downloadDocument(filename);
+}
+// При загрузке страницы проверяем аватар
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        const savedAvatar = localStorage.getItem(getRoleKey('profileAvatar'));
+        const avEl = document.getElementById('profileAvatar');
+        if (savedAvatar && avEl) {
+            avEl.src = savedAvatar;
+        }
+    }, 100);
+});
+</script>
+<div id="detailModal" class="modal" onclick="closeDetailModal()">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeDetailModal()">&times;</span>
+    <div id="modalBody"></div>
+  </div>
+</div>
+</body>
+</html>
